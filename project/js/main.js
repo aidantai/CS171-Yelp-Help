@@ -28,4 +28,5 @@ function initMain(data) {
 
     // Log data
     console.log("Promised data: ", data);
+    console.log("Number of businesses:", data.length);
 }
