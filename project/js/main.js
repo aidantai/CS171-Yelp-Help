@@ -1,16 +1,37 @@
-function parseJSONL(text) {
-    // Split text into lines
-    let lines = text.split('\n').filter(line => line.trim() !== "");
+function cleanBusinesses(text) {
+    // Split text into lines, then parse into JSONs
+    let businesses = text
+        .split('\n')
+        .filter(line => line.trim() !== "")
+        .map(line => JSON.parse(line))
+        .map((business) => {
+            let categories = business["categories"];
+            console.log(categories);
+            if (categories === undefined || categories === null) {
+                categories = "";
+            } else {
+                categories = categories.split(", ");
+            }
+            business["categories"] = categories;
 
-    // Parse each line as JSON
-    return lines.map(line => JSON.parse(line));
+            let name = business["name"];
+            if (name === undefined || name === null) {
+                name = "";
+            }
+            business["name"] = name;
+
+            return business;
+        })
+
+
+    return businesses;
 }
 
 
 // Load data with promises
 let promises = [
     d3.text("data/yelp_academic_dataset_business.jsonl")
-        .then(parseJSONL),
+        .then(cleanBusinesses),
     // d3.json("data/yelp_academic_dataset_review.json")
 ];
 
