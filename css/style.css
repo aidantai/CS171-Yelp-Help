@@ -4,5 +4,22 @@ head, body {
 }
 
 #title {
+    font-family: Koulen;
+    font-size: 200px;
+    color: #5B2405;
+    padding-top: 10vh;
+    /*might change to just be center of section*/
+    margin-bottom: -40px;
+}
 
+#subtitle {
+    font-family: Koulen;
+    font-size: 65px;
+    color: #5B2405;
+}
+
+#names {
+    font-family: Century Gothic;
+    font-size: 20px;
+    padding-top: 2vh;
 }
