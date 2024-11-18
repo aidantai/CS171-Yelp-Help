@@ -20,14 +20,15 @@
 </head>
 <body>
 
+    
+
     <div class="container-fluid" id="fullpage">
         <!-- LANDING PAGE -->
         <div class="section" id="landing-page">
-            <div class="row">
-                <h1 class="text-center" id="title">DISHIN' DATA</h1>
-                <h2 class="text-center" id="subtitle">SERVING TRENDS FROM YELP REVIEWS</h2>
-                <h3 class="text-center" id="names">Hanna Chang, Aidan Tai, Ebenezer Tseh</h3>
-            </div>
+            <h1 class="text-center" id="title">DISHIN' DATA</h1>
+            <h2 class="text-center" id="subtitle">SERVING TRENDS FROM YELP REVIEWS</h2>
+            <h3 class="text-center" id="names">Hanna Chang, Aidan Tai, Ebenezer Tseh</h3>
+        </div>
 
         <!-- APPETIZER -->
         <div class="section" id="appetizer">
@@ -65,15 +66,18 @@
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <!-- fullpage.js -->
-<link rel="stylesheet" type="text/css" href="fullpage.css" />
+<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
 
-<script type="text/javascript" src="fullpage.js"></script>
+<script type="text/javascript" src="js/fullpage.js"></script>
 
 <script type="text/javascript">
-	var myFullPage = new fullpage('#fullpage', {
-		autoScrolling:true,
-		scrollBar: false
-	});
+	document.addEventListener('DOMContentLoaded', function () {
+        var myFullPage = new fullpage('#fullpage', {
+            autoScrolling: true,
+            scrollBar: false,
+            licenseKey: 'gplv3-license' // Replace with your license key if required
+        });
+    });
 </script>
 
 <!-- Visualization objects -->
