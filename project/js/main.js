@@ -28,5 +28,10 @@ function initMain(data) {
 
     // Log data
     console.log("Promised data: ", data);
-    console.log("Number of businesses:", data.length);
+    let businesses = data[0];
+    // let reviews = data[1];
+
+    console.log("Number of businesses:", businesses.length);
+
+    let averageStarVis = new BarChart("average-star-vis", businesses);
 }
