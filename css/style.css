@@ -18,8 +18,21 @@ head, body {
     color: #5B2405;
 }
 
+#subtitle2 {
+    font-family: Koulen;
+    font-size: 90px;
+    color: #5B2405;
+    margin-bottom: 50px;
+}
+
 #names {
-    font-family: Century Gothic;
-    font-size: 20px;
+    font-family: "Space Grotesk";
+    font-size: 30px;
     padding-top: 2vh;
+}
+
+.menu-items {
+    font-family: Koulen;
+    font-size: 60px;
+    color: #5B2405;
 }
