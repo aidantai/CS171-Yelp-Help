@@ -6,9 +6,8 @@ function cleanBusinesses(text) {
         .map(line => JSON.parse(line))
         .map((business) => {
             let categories = business["categories"];
-            console.log(categories);
             if (categories === undefined || categories === null) {
-                categories = "";
+                categories = [];
             } else {
                 categories = categories.split(", ");
             }
@@ -54,5 +53,6 @@ function initMain(data) {
 
     console.log("Number of businesses:", businesses.length);
 
-    let averageStarVis = new BarChart("average-star-vis", businesses);
+    let cuisineCountVis = new BarCuisine("cuisine-count-vis", businesses, "Number of Restaurants by Cuisine", (leaves)=>leaves.length);
+    let averageStarVis = new BarCuisine("average-star-vis", businesses, "Average Star Rating by Cuisine", (leaves)=>d3.mean(leaves, d=>d.stars));
 }

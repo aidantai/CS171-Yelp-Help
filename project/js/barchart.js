@@ -1,8 +1,11 @@
-class BarChart {
+class BarCuisine {
 
-    constructor(parentElement, data){
+    constructor(parentElement, data, title, leafFn){
         this.parentElement = parentElement;
         this.data = data;
+        this.leafFn = leafFn;
+        this.title = title;
+        this.cuisines = ["Chinese", "Japanese", "Korean", "Thai", "Vietnamese", "Indian", "French", "Italian", "Mexican", "Spanish", "Middle Eastern", "Mediterranean", "American", "African", "Caribbean", "Latin American", "Brazilian", "Cuban", "Hawaiian", "Filipino", "British", "Irish", "Scottish", "German", "Greek", "Turkish", "Russian", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese"];
 
         // this.parseDate = d3.timeParse("%m/%d/%Y");
         this.initVis()
@@ -15,7 +18,7 @@ class BarChart {
         // vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         // vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
-        vis.width = 500;
+        vis.width = 1300;
         vis.height = 500;
         // init drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -28,7 +31,7 @@ class BarChart {
         vis.svg.append('g')
             .attr('class', 'title bar-title')
             .append('text')
-            .text("BarChart Title")
+            .text(vis.title)
             .attr('transform', `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle');
 
@@ -59,7 +62,26 @@ class BarChart {
 
     wrangleData(){
         let vis = this;
-        vis.filteredData = vis.data.slice(0, 10);
+        // Slice data to only 1000 businesses
+        vis.filteredData = vis.data.slice(0, 2000);
+        // Filter out to only use businesses with matching cuisine categories from vis.cuisines
+        // Add a cuisine key to each business marking it
+        vis.filteredData = vis.filteredData.filter(business => {
+            let hasMatch = false;
+            business.categories.forEach(category => {
+                // some businesses have multiple cuisine categories, unfortunately will only use the first one
+                if (vis.cuisines.includes(category)) {
+                    business.cuisine = category;
+                    hasMatch = true;
+                }
+            }
+            )
+            return hasMatch;
+        });
+
+        vis.displayData = Array.from(d3.rollup(vis.filteredData, vis.leafFn, d=>d.cuisine), ([cuisine, val]) => ({cuisine, val}));
+        vis.displayData = vis.displayData.sort((a, b) => b.val - a.val);
+        console.log(vis.displayData)
 
         vis.updateVis();
 
@@ -69,9 +91,9 @@ class BarChart {
         let vis = this;
 
         // x domain: business name
-        vis.x.domain(d3.map(vis.filteredData, function (d) { return d.name; }));
-        // y domain: star range
-        vis.y.domain([0, d3.max(vis.filteredData, function (d) { return d.stars; })]);
+        vis.x.domain(d3.map(vis.displayData, function (d) { return d.cuisine; }));
+        // y domain: range of specified val
+        vis.y.domain([0, d3.max(vis.displayData, function (d) { return d.val; })]);
 
         // call axes
         vis.svg.select(".y-axis").call(vis.yAxis);
@@ -79,15 +101,15 @@ class BarChart {
 
 
         vis.rects = vis.svg.selectAll(".bar")
-            .data(vis.filteredData)
+            .data(vis.displayData)
             .join("rect")
             .attr("class", "bar")
             .transition()
-            .attr("x", (d) => vis.x(d.name))
-            .attr("y", (d) => vis.y(d.stars))
+            .attr("x", (d) => vis.x(d.cuisine))
+            .attr("y", (d) => vis.y(d.val))
             .attr("width", vis.x.bandwidth())
-            .attr("height", (d) => vis.height - vis.y(d.stars))
-            .attr("fill", "blue");
+            .attr("height", (d) => vis.height - vis.y(d.val))
+            .attr("fill", "steelblue");
 
     }
 
