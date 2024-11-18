@@ -55,4 +55,5 @@ function initMain(data) {
 
     let cuisineCountVis = new BarCuisine("cuisine-count-vis", businesses, "Number of Restaurants by Cuisine", (leaves)=>leaves.length);
     let averageStarVis = new BarCuisine("average-star-vis", businesses, "Average Star Rating by Cuisine", (leaves)=>d3.mean(leaves, d=>d.stars));
+    let reviewCountVis = new BarCuisine("review-count-vis", businesses, "Review Count by Cuisine", (leaves)=>d3.mean(leaves, d=>d.review_count));
 }
