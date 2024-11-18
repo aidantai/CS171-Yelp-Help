@@ -7,7 +7,7 @@ head, body {
     font-family: Koulen;
     font-size: 200px;
     color: #5B2405;
-    padding-top: 10vh;
+    /*padding-top: vh;*/
     /*might change to just be center of section*/
     margin-bottom: -40px;
 }
@@ -22,7 +22,7 @@ head, body {
     font-family: Koulen;
     font-size: 90px;
     color: #5B2405;
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
 
 #names {
