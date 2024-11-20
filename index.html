@@ -23,7 +23,7 @@
 
     <div class="container-fluid" id="fullpage">
         <!-- LANDING PAGE -->
-        <div class="section" id="landing-page" style="background-image: url('img/landing_bg.png');  background-size: 100%;">
+        <div class="section" id="landing-page" style="background-image: url('img/landing_bg.png');  background-size: cover;">
             <h1 class="text-center" id="title">DISHIN' DATA</h1>
             <h2 class="text-center" id="subtitle">SERVING TRENDS FROM YELP REVIEWS</h2>
             <h3 class="text-center" id="names">Hanna Chang, Aidan Tai, Ebenezer Tseh</h3>
@@ -31,37 +31,37 @@
 
         <!-- MENU -->
         <div class="section" id="menu">
-            <div class="row">
-                <h2 class="text-center" id="subtitle2">HERE'S WHAT WE'RE SERVING:</h2>
-                <h2 class="text-center menu-items">APPETIZERS .......................................... 1</h2>
-                <h2 class="text-center menu-items">ENTREE ................................................. 2</h2>
-                <h2 class="text-center menu-items">DESSERT ............................................... 3</h2>
-            </div>
+            <h2 class="text-center" id="subtitle2">HERE'S WHAT WE'RE SERVING:</h2>
+            <h2 class="text-center menu-items">APPETIZERS .......................................... 1</h2>
+            <h2 class="text-center menu-items">ENTREE ................................................. 2</h2>
+            <h2 class="text-center menu-items">DESSERT ............................................... 3</h2>
         </div>
 
         <!-- APPETIZER -->
-        <div class="section" id="appetizer">
-            <div class="row">
-                <div id="cuisine-count-vis"></div>
-                <p>Note: add tooltips</p>
-            </div>
-            <div class="row">
-                <div id="average-star-vis"></div>
-                <p>Note: add tooltips</p>
-            </div>
-            <div class="row">
-                <div id="review-count-vis"></div>
-                <p>Note: add tooltips</p>
+        <div class="section text-center" id="appetizer">
+            <form>
+                <label for="cuisine">Select a dependent variable:</label>
+                <select name="cuisine" id="cuisine-dep" onchange="updateCuisineVis()">
+                    <option value="count">Total Number of Restaurants by Cuisine</option>
+                    <option value="star">Average Star Rating by Cuisine</option>
+                    <option value="review">Total Review Count by Cuisine</option>
+                </select>
+            </form>
+            <div class="row" style="justify-content: center">
+                <div id="cuisine-vis" style="height: 71vh; width: 75%"></div>
             </div>
         </div>
 
         <!-- ENTREE -->
-        <div class="section" id="entree">Some section</div>
+        <div class="section text-center" id="entree" >
+            <div class="row" style="justify-content: center;">
+                <div id="review-vis" style="height: 71vh; width: 50%"></div>
+            </div>
+        </div>
 
         <!-- DESSERT -->
         <div class="section" id="dessert">Some section</div>
     </div>
-</div>
 
 <!-- Load JS libraries -->
 <!-- Bootstrap-->
@@ -82,15 +82,20 @@
         var myFullPage = new fullpage('#fullpage', {
             autoScrolling: true,
             scrollBar: false,
+            scrollOverflow: false,
             licenseKey: 'gplv3-license' // Replace with your license key if required
         });
     });
 </script>
 
 <!-- Visualization objects -->
-<script src="js/barchart.js"></script>
+<script type="module" src="js/barchart.js"></script>
+<script type="module" src="js/piechart.js"></script>
+
+<!-- Helper files -->
+<script type="module" src="js/handledata.js"></script>
 
 <!-- Load data, create visualizations -->
-<script src="js/main.js"></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

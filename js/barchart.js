@@ -1,25 +1,40 @@
+export { BarCuisine };
+
 class BarCuisine {
 
-    constructor(parentElement, data, title, leafFn){
+    constructor(parentElement, data){
         this.parentElement = parentElement;
         this.data = data;
-        this.leafFn = leafFn;
-        this.title = title;
-        this.cuisines = ["Chinese", "Japanese", "Korean", "Thai", "Vietnamese", "Indian", "French", "Italian", "Mexican", "Spanish", "Middle Eastern", "Mediterranean", "American", "African", "Caribbean", "Latin American", "Brazilian", "Cuban", "Hawaiian", "Filipino", "British", "Irish", "Scottish", "German", "Greek", "Turkish", "Russian", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese", "Eastern European", "Central European", "Scandinavian", "Austrian", "Belgian", "Swiss", "Dutch", "Portuguese"];
+        this.dependentVar = "count";
 
-        // this.parseDate = d3.timeParse("%m/%d/%Y");
+        this.cuisineMetaData = {
+            count: {
+                title: "Number of Restaurants by Cuisine",
+                leafFn: (leaves) => leaves.length
+            },
+            star: {
+                title: "Average Star Rating by Cuisine",
+                leafFn: (leaves) => d3.mean(leaves, d => d.stars)
+            },
+            review: {
+                title: "Review Count by Cuisine",
+                leafFn: (leaves) => d3.mean(leaves, d => d.review_count)
+            }
+        }
+
+        this.title = this.cuisineMetaData[this.dependentVar].title;
+        this.leafFn = this.cuisineMetaData[this.dependentVar].leafFn;
+
         this.initVis()
     }
 
     initVis(){
         let vis = this;
 
-        vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
-        // vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
-        // vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
+        vis.margin = {top: 40, right: 40, bottom: 40, left: 40};
+        vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
+        vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
-        vis.width = 1300;
-        vis.height = 500;
         // init drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
             .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -57,31 +72,31 @@ class BarCuisine {
             .attr("class", "x-axis axis")
             .attr("transform", "translate(0," + vis.height + ")");
 
-        this.wrangleData();
+        vis.wrangleData();
     }
 
-    wrangleData(){
+    wrangleData(dependentVar="count"){
         let vis = this;
-        // Slice data to only 1000 businesses
-        vis.filteredData = vis.data.slice(0, 2000);
-        // Filter out to only use businesses with matching cuisine categories from vis.cuisines
-        // Add a cuisine key to each business marking it
-        vis.filteredData = vis.filteredData.filter(business => {
-            let hasMatch = false;
-            business.categories.forEach(category => {
-                // some businesses have multiple cuisine categories, unfortunately will only use the first one
-                if (vis.cuisines.includes(category)) {
-                    business.cuisine = category;
-                    hasMatch = true;
-                }
-            }
-            )
-            return hasMatch;
-        });
 
-        vis.displayData = Array.from(d3.rollup(vis.filteredData, vis.leafFn, d=>d.cuisine), ([cuisine, val]) => ({cuisine, val}));
+        vis.dependentVar = dependentVar;
+        vis.title = vis.cuisineMetaData[vis.dependentVar].title;
+        vis.leafFn = vis.cuisineMetaData[vis.dependentVar].leafFn;
+
+        // Some businesses have multiple cuisines, so we need to create multiple copies of the business for each cuisine
+        // for each business, return an array of duplicated businesses each with a unique cuisine
+        // map func basically just appending cuisine val
+        vis.duplicatedData = vis.data.flatMap(d => {
+            return d.cuisines.map(cuisine => {
+                return {
+                    ...d,
+                    cuisine
+                }
+            })
+        })
+
+
+        vis.displayData = Array.from(d3.rollup(vis.duplicatedData, vis.leafFn, d=>d.cuisine), ([cuisine, val]) => ({cuisine, val}));
         vis.displayData = vis.displayData.sort((a, b) => b.val - a.val);
-        console.log(vis.displayData)
 
         vis.updateVis();
 
@@ -109,7 +124,7 @@ class BarCuisine {
             .attr("y", (d) => vis.y(d.val))
             .attr("width", vis.x.bandwidth())
             .attr("height", (d) => vis.height - vis.y(d.val))
-            .attr("fill", "steelblue");
+            .attr("fill", "#5B2405");
 
     }
 
