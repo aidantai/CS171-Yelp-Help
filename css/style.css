@@ -1,6 +1,6 @@
 head, body {
     background-color: #FFF3E7;
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 .container-fluid {
@@ -25,10 +25,11 @@ head, body {
     color: #5B2405;
 }
 
-#subtitle2 {
+.subtitle2 {
     font-family: Koulen;
     font-size: 90px;
-    color: #5B2405;
+    color: #fff3e7;
+    -webkit-text-stroke: 2px #5B2405;
     /*margin-bottom: 50px;*/
 }
 
@@ -42,4 +43,49 @@ head, body {
     font-family: Koulen;
     font-size: 60px;
     color: #5B2405;
+}
+
+.bullet-points {
+    font-family: Koulen;
+    font-size: 36px;
+    margin-left: 30vw;
+    color: #5B2405;
+}
+
+#app-title, #entree-title {
+    font-family: Koulen;
+    font-size: 90px;
+    color: #5B2405;
+    margin-top: 0vh;
+    margin-bottom: 5vh;
+    text-decoration: underline;
+    /*padding-top: 0px;*/
+}
+
+.app-text {
+    font-family: "Instrument Sans";
+    font-size: 27px;
+    border: 2px solid #DABFAA; /* Adjust color to match the outline */
+    border-radius: 44px; /* Rounded corners */
+    padding: 30px; /* Spacing inside the box */
+    text-align: center; /* Center text alignment */
+    display: inline-block; /* Shrink the box to fit content */
+}
+
+.app-text-2 {
+    font-family: "Instrument Sans";
+    font-size: 25px;
+    color: #5B2405;
+    padding-top: 3vh;
+    padding-bottom: -5vh;
+}
+
+#app-corner {
+    font-family: Koulen;
+    font-size: 60px;
+    color: #5B2405;
+    position: absolute; /* Positions the text relative to the container */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    margin: 5vh; /* Remove default margins */
 }
