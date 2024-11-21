@@ -52,7 +52,7 @@ head, body {
     color: #5B2405;
 }
 
-#app-title, #entree-title {
+#app-title, #entree-title,#dessert-title {
     font-family: Koulen;
     font-size: 90px;
     color: #5B2405;
@@ -80,7 +80,7 @@ head, body {
     padding-bottom: -5vh;
 }
 
-#app-corner {
+.app-corner, .entree-corner {
     font-family: Koulen;
     font-size: 60px;
     color: #5B2405;
