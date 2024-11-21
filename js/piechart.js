@@ -16,8 +16,8 @@ class PieReviews {
         let vis = this;
 
         vis.margin = {top: 40, right: 40, bottom: 40, left: 40};
-        vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width*0.8 - vis.margin.left - vis.margin.right;
-        vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height*0.8 - vis.margin.top - vis.margin.bottom;
+        vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
+        vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
         // init drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -41,7 +41,7 @@ class PieReviews {
         vis.pie = d3.pie()
             .value(d => d.value)
 
-        vis.outerRadius = vis.width / 2;
+        vis.outerRadius = vis.height*0.9 / 2;
         vis.innerRadius = 0;
 
         vis.arc = d3.arc()
