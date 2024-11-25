@@ -86,10 +86,34 @@
                 <h2 class="text-left app-corner">APPETIZER</h2>
             </div>
             <div class="row">
-                <h2 class="text-center app-text-2">
+                <h2 class="text-center app-text-2" style="padding-bottom:25px;">
                     Take a chance at ranking the cuisines from most to least rated in terms of stars.
                 </h2>
             </div>
+            <div class="row">
+                <div class="col" id="sortable-list">
+                    <div class="card mb-2" data-rank="1">
+                        <div class="card-body">Option 1</div>
+                    </div>
+                    <div class="card mb-2" data-rank="2">
+                        <div class="card-body">Option 2</div>
+                    </div>
+                    <div class="card mb-2" data-rank="3">
+                        <div class="card-body">Option 3</div>
+                    </div>
+                    <div class="card mb-2" data-rank="4">
+                        <div class="card-body">Option 4</div>
+                    </div>
+                    <div class="card mb-2" data-rank="5">
+                        <div class="card-body">Option 5</div>
+                    </div>
+                </div>
+                <div class="col" id="correct-ranking">
+
+                    
+                </div>
+            </div>
+            <button class="submit-btn" onclick="handleRankingButton(button=true)">Submit</button>
         </div>
 
         <!-- ENTREE 1 -->
@@ -171,49 +195,64 @@
         </div>
     </div>
 
-<!-- Load JS libraries -->
-<!-- Bootstrap-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    <!-- Load JS libraries -->
+    <!-- Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-<!-- d3 -->
-<script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- d3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- sortablejs -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.4/Sortable.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          let hasSubmitted = false;
+          const sortable = new Sortable(document.getElementById('sortable-list'), {
+            animation: 150,
+            ghostClass: 'sortable-ghost',
+            onEnd: (evt) => {
+              console.log('New Order:', sortable.toArray());
+              handleRankingButton();
+            },
+          });
+        });
+      </script>
 
     <!-- topoJSON -->
-<script src="https://d3js.org/topojson.v2.min.js"></script>
-<!-- fullpage.js -->
-<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
-<link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <!-- fullpage.js -->
+    <link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
 
-<script type="text/javascript" src="js/fullpage.js"></script>
+    <script type="text/javascript" src="js/fullpage.js"></script>
 
     <script type="text/javascript" src="js/leaflet.js"></script>
-<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function () {
-        var myFullPage = new fullpage('#fullpage', {
-            autoScrolling: true,
-            scrollBar: false,
-            scrollOverflow: false,
-            responsiveWidth: 700,
-            parallax: true,
-            licenseKey: 'gplv3-license' // Replace with your license key if required
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var myFullPage = new fullpage('#fullpage', {
+                autoScrolling: true,
+                scrollBar: false,
+                scrollOverflow: false,
+                responsiveWidth: 700,
+                parallax: true,
+                licenseKey: 'gplv3-license' // Replace with your license key if required
+            });
         });
-    });
-</script>
+    </script>
 
-<!-- Visualization objects -->
-<script type="module" src="js/barchart.js"></script>
-<script type="module" src="js/piechart.js"></script>
-
-<script type="module" src="js/geovis.js"></script>
+    <!-- Visualization objects -->
+    <script type="module" src="js/barchart.js"></script>
+    <script type="module" src="js/piechart.js"></script>
+    <script type="module" src="js/geovis.js"></script>
 
 
     <!-- Helper files -->
-<script type="module" src="js/handledata.js"></script>
+    <script type="module" src="js/handledata.js"></script>
+    <script src="js/ranking.js"></script>
 
-<!--leaflets-->
-
+    <!--leaflets-->
     <!-- Include Leaflet JavaScript -->
 
 
@@ -222,6 +261,6 @@
 
 
     <!-- Load data, create visualizations -->
-<script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

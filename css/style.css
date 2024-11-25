@@ -158,3 +158,24 @@ label {
     color: #5B2405;
     font-family: Koulen;
 }
+
+.card {
+    border: 1px solid #343a40;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    height: 40px;
+    margin: 0 auto; 
+}
+
+.card-body {
+    margin: 0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    text-align: left;
+    display: flex; 
+    justify-content: left; 
+    align-items: center; 
+    font-size: larger;
+}
