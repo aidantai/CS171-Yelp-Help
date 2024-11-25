@@ -89,3 +89,72 @@ head, body {
     left: 0; /* Align to the left */
     margin: 5vh; /* Remove default margins */
 }
+
+/* Set the size of the map container */
+#map {
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    height: 400px;
+    margin: 0 auto; /* Center the map container */
+    border: 1px solid #ccc; /* Optional border */
+}
+
+
+
+label {
+    font-weight: bold;
+}
+
+.dropdown_restrictions{
+
+
+    margin-bottom: 25px;
+
+}
+
+
+/* Cluster marker styles */
+/*.marker-cluster-small {*/
+/*    background-color: rgba(181, 226, 140, 0.6);*/
+/*    color: #2c662d;*/
+/*}*/
+/*.marker-cluster-medium {*/
+/*    background-color: rgba(241, 211, 87, 0.6);*/
+/*    color: #6a5512;*/
+/*}*/
+/*.marker-cluster-large {*/
+/*    background-color: rgba(253, 156, 115, 0.6);*/
+/*    color: #923b20;*/
+/*}*/
+/*.marker-cluster div {*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    border-radius: 50%;*/
+/*    text-align: center;*/
+/*    border: 2px solid #fff;*/
+/*    font-size: 16px;*/
+/*    line-height: 38px;*/
+/*}*/
+
+/* Custom cluster marker styles */
+.custom-cluster-icon {
+    background-color: transparent;
+    border: none;
+}
+
+.custom-cluster-icon div {
+    background-color:  rgba(241, 211, 87, 0.6); /* Light gray background for visibility */
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    /*color: #5B2405;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-cluster-icon span {
+    font-size: 15px;
+    color: #5B2405;
+    font-family: Koulen;
+}
