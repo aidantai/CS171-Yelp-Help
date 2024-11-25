@@ -4,17 +4,16 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yelp Help</title>
 
-
+    <!-- AOS package-->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
 
     <!-- Include Leaflet MarkerCluster CSS -->
     <link
-            rel="stylesheet"
-            href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
     />
-
-
-    <title>Yelp Help</title>
 
     <!-- CSS libraries -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -28,8 +27,6 @@
 </head>
 <body>
 
-
-
     <div class="container-fluid" id="fullpage">
         <!-- LANDING PAGE -->
         <div class="section" id="landing-page" style="background-image: url('img/landing_bg.png');  background-size: cover;">
@@ -39,51 +36,93 @@
         </div>
 
         <!-- MENU -->
+<!--        <div class="section" id="menu" style="background-image: url('img/menu_bg.png');  background-size: cover;">-->
+<!--            <h2 class="text-center subtitle2">HERE'S WHAT WE'RE SERVING:</h2>-->
+<!--            <h2 class="text-center menu-items">APPETIZERS .......................................... 1</h2>-->
+<!--                <h3 class="text-left bullet-points">● THE CENTRAL QUESTION</h3>-->
+<!--                <h3 class="text-left bullet-points">● INTRO TO REVIEWS</h3>-->
+<!--            <h2 class="text-center menu-items">ENTREE ................................................. 2</h2>-->
+<!--                <h3 class="text-left bullet-points">● ALL THE YUMMY VISUALIZATIONS</h3>-->
+<!--            <h2 class="text-center menu-items">DESSERT ............................................... 3</h2>-->
+<!--                <h3 class="text-left bullet-points">● THE CONCLUSION</h3>-->
+<!--        </div>-->
+
         <div class="section" id="menu" style="background-image: url('img/menu_bg.png');  background-size: cover;">
             <h2 class="text-center subtitle2">HERE'S WHAT WE'RE SERVING:</h2>
-            <h2 class="text-center menu-items">APPETIZERS .......................................... 1</h2>
-                <h3 class="text-left bullet-points">● THE CENTRAL QUESTION</h3>
-                <h3 class="text-left bullet-points">● INTRO TO REVIEWS</h3>
-            <h2 class="text-center menu-items">ENTREE ................................................. 2</h2>
-                <h3 class="text-left bullet-points">● ALL THE YUMMY VISUALIZATIONS</h3>
-            <h2 class="text-center menu-items">DESSERT ............................................... 3</h2>
-                <h3 class="text-left bullet-points">● THE CONCLUSION</h3>
+            <div class="menu-items">
+                <div data-aos="fade-up" data-aos-delay="500">
+                    🥐 APPETIZERS ......................................... $1
+                </div>
+            </div>
+            <div class="menu-items bullet-points">
+                <div data-aos="fade-up" data-aos-delay="500">
+                    ● THE CENTRAL QUESTION
+                </div>
+            </div>
+            <div class="menu-items">
+                <div data-aos="fade-up" data-aos-delay="1500">
+                    🍔 ENTREE ................................................ $2
+                </div>
+            </div>
+            <div class="menu-items bullet-points">
+                <div data-aos="fade-up" data-aos-delay="1500">
+                    ● ALL THE YUMMY VISUALIZATIONS
+                </div>
+            </div>
+            <div class="menu-items">
+                <div data-aos="fade-up" data-aos-delay="2500">
+                    🍨 DESSERT .............................................. $3
+                </div>
+            </div>
+            <div class="menu-items bullet-points">
+                <div data-aos="fade-up" data-aos-delay="2500">
+                    ● YOUR OWN PERSONAL QUIZ
+                </div>
+            </div>
         </div>
 
         <!-- APPETIZER 1 -->
         <div class="section" id="appetizer1" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <h2 class="text-center" id="app-title">APPETIZER</h2>
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <h3 class="text-center app-text">
-                        Have you ever wanted to go out, but didn’t know what restaurant to choose?
-                        Found Google Map’s recommendations unhelpful or unwieldy?
-                        Been suspicious of Yelp reviews’ reliability?
-                    </h3>
-                    <h3 class="text-center app-text-2">
-                        Reviews can contain lots of bias -
-                        we all have different preferences in food,
-                        service, ambiance, and more.
-                    </h3>
-                    <h3 class="text-center app-text-2">
-                        <b>We aim to look at the different kinds of sentiments
-                        present in reviews as well as general trends across
-                        restaurants, cuisines, and locations.</b>
-                    </h3>
-                    <h3 class="text-center app-text-2">
-                        Hopefully, you’ll be able to find a restaurant
-                        you’d like to visit by the end of this site!
-                    </h3>
+            <div class="col-3"></div>
+            <div class="col-6 slide-text">
+                <div class="text-center">
+                    <div data-aos="fade-up" data-aos-delay="500">
+                        <div class="app-text">
+                            Have you ever wanted to go out, but didn’t know what restaurant to choose?
+                            Found Google Map’s recommendations unhelpful or unwieldy?
+                            Been suspicious of Yelp reviews’ reliability?
+                        </div>
+                    </div>
                 </div>
-                <div class="col-3"></div>
+                <div class="text-center app-text-2">
+                    <div data-aos="fade-up" data-aos-delay="1500">
+                    Reviews can contain lots of bias -
+                    we all have different preferences in food,
+                    service, ambiance, and more.
+                    </div>
+                </div>
+                <div class="text-center app-text-2">
+                    <div data-aos="fade-up" data-aos-delay="2500">
+                    <b>We aim to look at the different kinds of sentiments
+                    present in reviews as well as general trends across
+                    restaurants, cuisines, and locations.</b>
+                    </div>
+                </div>
+                <div class="text-center app-text-2">
+                    <div data-aos="fade-up" data-aos-delay="3500">
+                    Hopefully, you’ll be able to find a restaurant
+                    you’d like to visit by the end of this site!
+                    </div>
+                </div>
             </div>
+            <div class="col-3"></div>
         </div>
 
         <!-- APPETIZER 2 -->
         <div class="section" id="appetizer2" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row">
-                <h2 class="text-left app-corner">APPETIZER</h2>
+                <h2 class="text-left app-corner">APPETIZER - Ranking Game</h2>
             </div>
             <div class="row">
                 <h2 class="text-center app-text-2">
@@ -119,29 +158,24 @@
                 <div id="review-vis" style="height: 80vh; width: 50%"></div>
             </div>
         </div>
+
         <!-- ENTREE 3 -->
         <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row">
                 <h2 class="text-left entree-corner">ENTREE</h2>
             </div>
-
-
                 <!-- Dropdown Menu for Dietary Restrictions -->
                 <div class="dropdown_restrictions">
                     <label for="dietaryRestriction">Choose your dietary restrictions:</label>
-
                     <select id="dietaryRestriction">
-                        <!-- Options will be populated by JavaScript -->
-
+                    <!-- Options will be populated by JavaScript -->
                     </select>
                 </div>
-
             <!-- Map Container -->
             <div class=" row">
                 <div id="map"></div>
             </div>
         </div>
-
 
         <!-- DESSERT -->
         <div class="section" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
@@ -171,57 +205,67 @@
         </div>
     </div>
 
-<!-- Load JS libraries -->
-<!-- Bootstrap-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+    <!-- Load JS libraries -->
 
-<!-- d3 -->
-<script src="https://d3js.org/d3.v7.min.js"></script>
+    <!-- AOS fader -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+    <!-- d3 -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!-- topoJSON -->
-<script src="https://d3js.org/topojson.v2.min.js"></script>
-<!-- fullpage.js -->
-<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
-<link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
 
-<script type="text/javascript" src="js/fullpage.js"></script>
-
+    <!-- fullpage.js -->
+    <link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+    <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
+    <script type="text/javascript" src="js/fullpage.js"></script>
     <script type="text/javascript" src="js/leaflet.js"></script>
-<script type="text/javascript">
-	document.addEventListener('DOMContentLoaded', function () {
+    <script type="text/javascript">
         var myFullPage = new fullpage('#fullpage', {
             autoScrolling: true,
             scrollBar: false,
             scrollOverflow: false,
             responsiveWidth: 700,
             parallax: true,
-            licenseKey: 'gplv3-license' // Replace with your license key if required
+            licenseKey: 'gplv3-license',
+            afterLoad: function() {
+                // Need this for AOS to work with fullpage.js
+                // https://github.com/michalsnik/aos/issues/490
+                document.querySelectorAll('.fp-table.active .aos-init').forEach((el) => {
+                    el.classList.add('aos-animate')
+                })
+            },
+            beforeLeave: function(before, after) {
+                before.item.querySelectorAll('.aos-init').forEach((el) => {
+                    el.classList.remove('aos-animate')
+                })
+            },
         });
-    });
-</script>
+    </script>
 
-<!-- Visualization objects -->
-<script type="module" src="js/barchart.js"></script>
-<script type="module" src="js/piechart.js"></script>
-
-<script type="module" src="js/geovis.js"></script>
-
+    <!-- Visualization objects -->
+    <script type="module" src="js/barchart.js"></script>
+    <script type="module" src="js/piechart.js"></script>
+    <script type="module" src="js/geovis.js"></script>
 
     <!-- Helper files -->
-<script type="module" src="js/handledata.js"></script>
+    <script type="module" src="js/handledata.js"></script>
 
-<!--leaflets-->
-
-    <!-- Include Leaflet JavaScript -->
-
+    <!--leaflets-->
 
     <!-- Include Leaflet MarkerCluster JavaScript -->
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 
-
     <!-- Load data, create visualizations -->
-<script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

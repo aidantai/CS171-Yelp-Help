@@ -30,6 +30,7 @@ head, body {
     font-size: 90px;
     color: #fff3e7;
     -webkit-text-stroke: 2px #5B2405;
+    margin-top: 5vh;
     /*margin-bottom: 50px;*/
 }
 
@@ -43,6 +44,8 @@ head, body {
     font-family: Koulen;
     font-size: 60px;
     color: #5B2405;
+    max-width: 80vw;
+    margin: auto;
 }
 
 .bullet-points {
@@ -50,14 +53,15 @@ head, body {
     font-size: 36px;
     margin-left: 30vw;
     color: #5B2405;
+    margin-top: -30px;
 }
 
 #app-title, #entree-title,#dessert-title {
     font-family: Koulen;
-    font-size: 90px;
+    font-size: 85px;
     color: #5B2405;
     margin-top: 0vh;
-    margin-bottom: 5vh;
+    margin-bottom: 0vh;
     text-decoration: underline;
     /*padding-top: 0px;*/
 }
@@ -71,6 +75,7 @@ head, body {
     text-align: center; /* Center text alignment */
     display: inline-block; /* Shrink the box to fit content */
 }
+
 
 .app-text-2 {
     font-family: "Instrument Sans";
@@ -99,17 +104,17 @@ head, body {
     border: 1px solid #ccc; /* Optional border */
 }
 
-
-
 label {
     font-weight: bold;
 }
 
 .dropdown_restrictions{
-
-
     margin-bottom: 25px;
+}
 
+.slide-text {
+    max-width: 80vw;
+    margin: auto;
 }
 
 
