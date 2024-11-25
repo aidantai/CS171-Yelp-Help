@@ -1,9 +1,19 @@
-<!doctype html>
+<!Doctype html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <!-- Include Leaflet MarkerCluster CSS -->
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+    />
+
+
     <title>Yelp Help</title>
 
     <!-- CSS libraries -->
@@ -18,7 +28,7 @@
 </head>
 <body>
 
-    
+
 
     <div class="container-fluid" id="fullpage">
         <!-- LANDING PAGE -->
@@ -88,7 +98,7 @@
                 <h2 class="text-center" id="entree-title">ENTREE</h2>
             </div>
             <form>
-                <label for="cuisine">Select a dependent variable:</label>
+                <label for="cuisine-dep">Select a dependent variable:</label>
                 <select name="cuisine" id="cuisine-dep" onchange="updateCuisineVis()">
                     <option value="count">Total Number of Restaurants by Cuisine</option>
                     <option value="star">Average Star Rating by Cuisine</option>
@@ -109,6 +119,29 @@
                 <div id="review-vis" style="height: 80vh; width: 50%"></div>
             </div>
         </div>
+        <!-- ENTREE 3 -->
+        <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+            <div class="row">
+                <h2 class="text-left entree-corner">ENTREE</h2>
+            </div>
+
+
+                <!-- Dropdown Menu for Dietary Restrictions -->
+                <div class="dropdown_restrictions">
+                    <label for="dietaryRestriction">Choose your dietary restrictions:</label>
+
+                    <select id="dietaryRestriction">
+                        <!-- Options will be populated by JavaScript -->
+
+                    </select>
+                </div>
+
+            <!-- Map Container -->
+            <div class=" row">
+                <div id="map"></div>
+            </div>
+        </div>
+
 
         <!-- DESSERT -->
         <div class="section" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
@@ -147,11 +180,15 @@
 <!-- d3 -->
 <script src="https://d3js.org/d3.v7.min.js"></script>
 
+    <!-- topoJSON -->
+<script src="https://d3js.org/topojson.v2.min.js"></script>
 <!-- fullpage.js -->
 <link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+<link rel="stylesheet" type="text/css" href="css/leaflet.css" />
 
 <script type="text/javascript" src="js/fullpage.js"></script>
 
+    <script type="text/javascript" src="js/leaflet.js"></script>
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function () {
         var myFullPage = new fullpage('#fullpage', {
@@ -169,10 +206,22 @@
 <script type="module" src="js/barchart.js"></script>
 <script type="module" src="js/piechart.js"></script>
 
-<!-- Helper files -->
+<script type="module" src="js/geovis.js"></script>
+
+
+    <!-- Helper files -->
 <script type="module" src="js/handledata.js"></script>
 
-<!-- Load data, create visualizations -->
+<!--leaflets-->
+
+    <!-- Include Leaflet JavaScript -->
+
+
+    <!-- Include Leaflet MarkerCluster JavaScript -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+
+    <!-- Load data, create visualizations -->
 <script type="module" src="js/main.js"></script>
 </body>
 </html>
