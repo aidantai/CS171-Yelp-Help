@@ -2,6 +2,7 @@
 import {cleanBusinesses, cleanReviews, businessFilter, addCuisine} from "./handledata.js";
 import {BarCuisine} from "./barchart.js";
 import {PieReviews} from "./piechart.js";
+import { WordCloud } from "./wordcloud.js";
 export {updateCuisineVis};
 
 // Load data with promises
@@ -11,7 +12,8 @@ let promises = [
         .then(cleanBusinesses),
     d3.text("data/yelp_academic_dataset_review_top25.jsonl")
         .then(cleanReviews),
-    d3.json("data/yelp_academic_dataset_cuisines_reduced.json")
+    d3.json("data/yelp_academic_dataset_cuisines_reduced.json"),
+    d3.json("data/wordcloud_top25.json")
 ];
 
 // Handle data error
@@ -33,6 +35,7 @@ function initMain(data) {
     let businesses = data[0];
     let reviews = data[1];
     let cuisines = data[2];
+    let reviewcloud = data[3];
     console.log("Number of businesses:", businesses.length);
     console.log("Number of reviews:", reviews.length);
     console.log("Number of cuisines:", cuisines);
@@ -54,6 +57,8 @@ function initMain(data) {
     // let cuisineCountVis = new BarCuisine("cuisine-count-vis", cuisineBusinesses, "Number of Restaurants by Cuisine", (leaves)=>leaves.length);
     // let averageStarVis = new BarCuisine("average-star-vis", cuisineBusinesses, "Average Star Rating by Cuisine", (leaves)=>d3.mean(leaves, d=>d.stars));
     // let reviewCountVis = new BarCuisine("review-count-vis", cuisineBusinesses, "Review Count by Cuisine", (leaves)=>d3.mean(leaves, d=>d.review_count));
+
+    let wordcloud = new WordCloud("wordcloud-vis", reviewcloud);
 
     let reviewVis = new PieReviews("review-vis", reviews);
 }

@@ -179,8 +179,9 @@ label {
     border-radius: 9px;
     width: 353px;
     height: 56px;
-    margin: 0 auto; 
+    margin: 0;
 }
+
 
 .card-body {
     margin: 0;
@@ -216,3 +217,19 @@ label {
     background-color: #4a200f; /* Slightly darker brown on hover */
     transform: translateY(-2px); /* Slight lift on hover */
 }
+
+#sortable-list {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: flex-end; /* Align cards to the right */
+    gap: 10px; /* Maintain vertical spacing between cards */
+}
+
+#correct-ranking {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: flex-start; /* Align cards to the left */
+    gap: 10px; /* Maintain vertical spacing between cards */
+}
+
+

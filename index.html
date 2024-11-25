@@ -74,7 +74,7 @@
         <div class="section" id="appetizer1" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="text-center" id="app-title">APPETIZER</div>
             <div class="app1-text">
-                <div data-aos="fade-up" data-aos-delay="300">
+                <div data-aos="fade-up" data-aos-delay="500">
                     <div class="app-text">
                         Have you ever wanted to go out, but didn’t know what restaurant to choose?
                         Found Google Map’s recommendations unhelpful or unwieldy?
@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="app-text-2 app1-text">
-                <div data-aos="fade-up" data-aos-delay="1000">
+                <div data-aos="fade-up" data-aos-delay="1250">
                 Reviews can contain lots of bias -
                 we all have different preferences in food,
                 service, ambiance, and more.
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="app-text-2 app1-text">
-                <div data-aos="fade-up" data-aos-delay="3500">
+                <div data-aos="fade-up" data-aos-delay="2750">
                 Hopefully, you’ll be able to find a restaurant
                 you’d like to visit by the end of this site!
                 </div>
@@ -159,38 +159,49 @@
 
         <!-- ENTREE 2 -->
         <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
-            <div class="row">
+            <div class="row" style="padding-bottom: 20px">
                 <h2 class="text-left entree-corner">ENTREE</h2>
             </div>
             <div class="row" style="justify-content: center;">
-                <div id="review-vis" style="height: 80vh; width: 50%"></div>
+                <div id="wordcloud-vis" style="height: 80vh; width: 50%"></div>
             </div>
         </div>
 
         <!-- ENTREE 3 -->
-        <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <!-- <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row">
                 <h2 class="text-left entree-corner">ENTREE</h2>
-            </div>
+            </div> -->
                 <!-- Dropdown Menu for Dietary Restrictions -->
-                <div class="dropdown_restrictions">
+                <!-- <div class="dropdown_restrictions">
                     <label for="dietaryRestriction">Choose your dietary restrictions:</label>
                     <select id="dietaryRestriction">
-                    <!-- Options will be populated by JavaScript -->
-                    </select>
-                </div>
+                    <-- Options will be populated by JavaScript -->
+                    <!-- </select> -->
+                <!-- </div> --> 
             <!-- Map Container -->
-            <div class=" row">
+            <!-- <div class=" row">
                 <div id="map"></div>
             </div>
-        </div>
+        </div> -->
 
         <!-- DESSERT -->
-        <div class="section" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="section text-center" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row">
                 <h2 class="text-center" id="dessert-title">DESSERT</h2>
             </div>
-            <div class="row">
+            <!-- Dropdown Menu for Dietary Restrictions -->
+            <div class="dropdown_restrictions">
+                <label for="dietaryRestriction">Choose your dietary restrictions:</label>
+                <select id="dietaryRestriction">
+                <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+        <!-- Map Container -->
+        <div class=" row">
+            <div id="map"></div>
+        </div>
+            <!-- <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6">
                     <h3 class="text-center app-text">
@@ -208,7 +219,7 @@
                         in the area, and the types of people that visit said restaurants?
                     </h3>
                 </div>
-                <div class="col-3"></div>
+                <div class="col-3"></div> -->
             </div>
         </div>
     </div>
@@ -284,6 +295,10 @@
     <!-- Helper files -->
     <script type="module" src="js/handledata.js"></script>
     <script src="js/ranking.js"></script>
+
+    <!-- d3 cloud -->
+    <script src="https://cdn.jsdelivr.net/npm/d3-cloud/build/d3.layout.cloud.min.js"></script>
+
 
     <!--leaflets-->
 
