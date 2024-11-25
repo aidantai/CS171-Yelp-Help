@@ -1,4 +1,4 @@
-// Functions for cleaning data when loaded from JSONs
+// Functions for cleaning data when loaded from JSONs and filtering
 export { cleanBusinesses, cleanReviews, businessFilter, categoryFilter, nameFilter, stateFilter, addCuisine };
 
 function cleanBusinesses(text) {

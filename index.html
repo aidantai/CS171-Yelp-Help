@@ -115,6 +115,7 @@
                     you’d like to visit by the end of this site!
                     </div>
                 </div>
+                <div class="col-3"></div>
             </div>
             <div class="col-3"></div>
         </div>
@@ -125,10 +126,34 @@
                 <h2 class="text-left app-corner">APPETIZER - Ranking Game</h2>
             </div>
             <div class="row">
-                <h2 class="text-center app-text-2">
+                <h2 class="text-center app-text-2" style="padding-bottom:25px;">
                     Take a chance at ranking the cuisines from most to least rated in terms of stars.
                 </h2>
             </div>
+            <div class="row">
+                <div class="col" id="sortable-list">
+                    <div class="card mb-2" data-rank="1">
+                        <div class="card-body">Option 1</div>
+                    </div>
+                    <div class="card mb-2" data-rank="2">
+                        <div class="card-body">Option 2</div>
+                    </div>
+                    <div class="card mb-2" data-rank="3">
+                        <div class="card-body">Option 3</div>
+                    </div>
+                    <div class="card mb-2" data-rank="4">
+                        <div class="card-body">Option 4</div>
+                    </div>
+                    <div class="card mb-2" data-rank="5">
+                        <div class="card-body">Option 5</div>
+                    </div>
+                </div>
+                <div class="col" id="correct-ranking">
+
+
+                </div>
+            </div>
+            <button class="submit-btn" onclick="handleRankingButton(button=true)">Submit</button>
         </div>
 
         <!-- ENTREE 1 -->
@@ -221,6 +246,22 @@
     <!-- d3 -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
+    <!-- sortablejs -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.4/Sortable.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          let hasSubmitted = false;
+          const sortable = new Sortable(document.getElementById('sortable-list'), {
+            animation: 150,
+            ghostClass: 'sortable-ghost',
+            onEnd: (evt) => {
+              console.log('New Order:', sortable.toArray());
+              handleRankingButton();
+            },
+          });
+        });
+      </script>
+
     <!-- topoJSON -->
     <script src="https://d3js.org/topojson.v2.min.js"></script>
 
@@ -259,6 +300,7 @@
 
     <!-- Helper files -->
     <script type="module" src="js/handledata.js"></script>
+    <script src="js/ranking.js"></script>
 
     <!--leaflets-->
 
