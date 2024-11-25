@@ -14,7 +14,7 @@ function handleRankingButton(button=false) {
 
     console.log('handling ranking button');
 
-    let correctRanking = ["Option 2", "Option 1", "Option 3", "Option 5", "Option 4"];
+    let correctRanking = ["American", "Mexican", "Italian", "Chinese", "Japanese"];
 
     let userRanking = Array.from(document.querySelectorAll('#sortable-list .card-body')).map((card) => card.textContent)
     console.log(userRanking);

@@ -36,17 +36,6 @@
         </div>
 
         <!-- MENU -->
-<!--        <div class="section" id="menu" style="background-image: url('img/menu_bg.png');  background-size: cover;">-->
-<!--            <h2 class="text-center subtitle2">HERE'S WHAT WE'RE SERVING:</h2>-->
-<!--            <h2 class="text-center menu-items">APPETIZERS .......................................... 1</h2>-->
-<!--                <h3 class="text-left bullet-points">● THE CENTRAL QUESTION</h3>-->
-<!--                <h3 class="text-left bullet-points">● INTRO TO REVIEWS</h3>-->
-<!--            <h2 class="text-center menu-items">ENTREE ................................................. 2</h2>-->
-<!--                <h3 class="text-left bullet-points">● ALL THE YUMMY VISUALIZATIONS</h3>-->
-<!--            <h2 class="text-center menu-items">DESSERT ............................................... 3</h2>-->
-<!--                <h3 class="text-left bullet-points">● THE CONCLUSION</h3>-->
-<!--        </div>-->
-
         <div class="section" id="menu" style="background-image: url('img/menu_bg.png');  background-size: cover;">
             <h2 class="text-center subtitle2">HERE'S WHAT WE'RE SERVING:</h2>
             <div class="menu-items">
@@ -83,41 +72,36 @@
 
         <!-- APPETIZER 1 -->
         <div class="section" id="appetizer1" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
-            <h2 class="text-center" id="app-title">APPETIZER</h2>
-            <div class="col-3"></div>
-            <div class="col-6 slide-text">
-                <div class="text-center">
-                    <div data-aos="fade-up" data-aos-delay="500">
-                        <div class="app-text">
-                            Have you ever wanted to go out, but didn’t know what restaurant to choose?
-                            Found Google Map’s recommendations unhelpful or unwieldy?
-                            Been suspicious of Yelp reviews’ reliability?
-                        </div>
+            <div class="text-center" id="app-title">APPETIZER</div>
+            <div class="app1-text">
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="app-text">
+                        Have you ever wanted to go out, but didn’t know what restaurant to choose?
+                        Found Google Map’s recommendations unhelpful or unwieldy?
+                        Been suspicious of Yelp reviews’ reliability?
                     </div>
                 </div>
-                <div class="text-center app-text-2">
-                    <div data-aos="fade-up" data-aos-delay="1500">
-                    Reviews can contain lots of bias -
-                    we all have different preferences in food,
-                    service, ambiance, and more.
-                    </div>
-                </div>
-                <div class="text-center app-text-2">
-                    <div data-aos="fade-up" data-aos-delay="2500">
-                    <b>We aim to look at the different kinds of sentiments
-                    present in reviews as well as general trends across
-                    restaurants, cuisines, and locations.</b>
-                    </div>
-                </div>
-                <div class="text-center app-text-2">
-                    <div data-aos="fade-up" data-aos-delay="3500">
-                    Hopefully, you’ll be able to find a restaurant
-                    you’d like to visit by the end of this site!
-                    </div>
-                </div>
-                <div class="col-3"></div>
             </div>
-            <div class="col-3"></div>
+            <div class="app-text-2 app1-text">
+                <div data-aos="fade-up" data-aos-delay="1000">
+                Reviews can contain lots of bias -
+                we all have different preferences in food,
+                service, ambiance, and more.
+                </div>
+            </div>
+            <div class="app-text-2 app1-text">
+                <div data-aos="fade-up" data-aos-delay="2000">
+                <b>We aim to look at the different kinds of sentiments
+                present in reviews as well as general trends across
+                restaurants, cuisines, and locations.</b>
+                </div>
+            </div>
+            <div class="app-text-2 app1-text">
+                <div data-aos="fade-up" data-aos-delay="3500">
+                Hopefully, you’ll be able to find a restaurant
+                you’d like to visit by the end of this site!
+                </div>
+            </div>
         </div>
 
         <!-- APPETIZER 2 -->
@@ -127,33 +111,32 @@
             </div>
             <div class="row">
                 <h2 class="text-center app-text-2" style="padding-bottom:25px;">
-                    Take a chance at ranking the cuisines from most to least rated in terms of stars.
+                    Take a chance at ranking the cuisines from most to least popular.
                 </h2>
             </div>
             <div class="row">
-                <div class="col" id="sortable-list">
+                <div class="col-6" id="sortable-list">
                     <div class="card mb-2" data-rank="1">
-                        <div class="card-body">Option 1</div>
+                        <div class="card-body">Italian</div>
                     </div>
                     <div class="card mb-2" data-rank="2">
-                        <div class="card-body">Option 2</div>
+                        <div class="card-body">Japanese</div>
                     </div>
                     <div class="card mb-2" data-rank="3">
-                        <div class="card-body">Option 3</div>
+                        <div class="card-body">American</div>
                     </div>
                     <div class="card mb-2" data-rank="4">
-                        <div class="card-body">Option 4</div>
+                        <div class="card-body">Mexican</div>
                     </div>
                     <div class="card mb-2" data-rank="5">
-                        <div class="card-body">Option 5</div>
+                        <div class="card-body">Chinese</div>
                     </div>
                 </div>
-                <div class="col" id="correct-ranking">
-
-
-                </div>
+                <div class="col-6" id="correct-ranking"></div>
             </div>
-            <button class="submit-btn" onclick="handleRankingButton(button=true)">Submit</button>
+            <div class="row">
+                <button class="submit-btn" onclick="handleRankingButton(button=true)">Submit</button>
+            </div>
         </div>
 
         <!-- ENTREE 1 -->

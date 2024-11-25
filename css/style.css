@@ -85,7 +85,7 @@ head, body {
     padding-bottom: -5vh;
 }
 
-.app-corner, .entree-corner {
+.app-corner {
     font-family: Koulen;
     font-size: 60px;
     color: #5B2405;
@@ -95,7 +95,17 @@ head, body {
     margin: 5vh; /* Remove default margins */
 }
 
-/* Set the size of the map container */
+.entree-corner {
+    font-family: Koulen;
+    font-size: 60px;
+    color: #5B2405;
+    position: absolute; /* Positions the text relative to the container */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    margin: 5vh; /* Remove default margins */
+}
+
+    /* Set the size of the map container */
 #map {
     width: 100%;
     max-width: 800px; /* Adjust as needed */
@@ -112,8 +122,8 @@ label {
     margin-bottom: 25px;
 }
 
-.slide-text {
-    max-width: 80vw;
+.app1-text {
+    max-width: 60vw;
     margin: auto;
 }
 
@@ -166,10 +176,9 @@ label {
 
 .card {
     border: 1px solid #343a40;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    height: 40px;
+    border-radius: 9px;
+    width: 353px;
+    height: 56px;
     margin: 0 auto; 
 }
 
@@ -182,5 +191,28 @@ label {
     display: flex; 
     justify-content: left; 
     align-items: center; 
-    font-size: larger;
+    font-size: 25px;
+    font-family: "Instrument Sans";
+}
+
+.submit-btn {
+    background-color: #5c2d13; /* Dark brown color */
+    color: white; /* White text */
+    font-size: 16px; /* Adjust size as needed */
+    font-family: Arial, sans-serif; /* Use a clean font */
+    padding: 10px 30px; /* Add padding for height and width */
+    border: none; /* Remove default border */
+    border-radius: 9px; /* Rounded corners */
+    cursor: pointer; /* Show pointer on hover */
+    transition: all 0.3s ease; /* Smooth hover effects */
+    width: 353px;
+    height: 56px;
+    font-size: 20px;
+    justify-content: center;
+    margin: auto;
+}
+
+.submit-btn:hover {
+    background-color: #4a200f; /* Slightly darker brown on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
 }
