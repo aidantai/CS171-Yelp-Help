@@ -42,14 +42,8 @@ class BarCuisine {
             .append('g')
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
-        // add title
-        vis.svg.append('g')
+        vis.title_group = vis.svg.append('g')
             .attr('class', 'title bar-title')
-            .append('text')
-            .text(vis.title)
-            .attr('transform', `translate(${vis.width / 2}, 10)`)
-            .attr('text-anchor', 'middle');
-
 
         vis.x = d3.scaleBand()
             .range([0, vis.width])
@@ -125,6 +119,16 @@ class BarCuisine {
             .attr("width", vis.x.bandwidth())
             .attr("height", (d) => vis.height - vis.y(d.val))
             .attr("fill", "#5B2405");
+
+            // add title
+        
+        vis.title_group.selectAll(".title")
+            .data([vis.title])
+            .join("text")
+            .attr("class", "title")
+            .text(d => d)
+            .attr('transform', `translate(${vis.width / 2}, 10)`)
+            .attr('text-anchor', 'middle');
 
     }
 
