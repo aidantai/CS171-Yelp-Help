@@ -5,6 +5,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yelp Help</title>
+<!--temp-->
+
 
     <!-- AOS package-->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
@@ -21,9 +23,14 @@
 
     <!-- Custom font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Koulen|Space+Grotesk|Instrument+Sans">
+    <!-- noUiSlider CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" rel="stylesheet">
+
 
     <!-- Custom CSS code -->
     <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 <body>
 
@@ -164,67 +171,114 @@
             </div>
             <h2>What do people comment on in reviews?</h2>
             <div class="row" style="justify-content: center;">
-                <div id="wordcloud-vis" style="height: 80vh; width: 50%"></div>
+                <div id="review-vis" style="height: 80vh; width: 50%"></div>
             </div>
         </div>
 
+
         <!-- ENTREE 3 -->
-        <!-- <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
-            <div class="row">
-                <h2 class="text-left entree-corner">ENTREE</h2>
-            </div> -->
-                <!-- Dropdown Menu for Dietary Restrictions -->
-                <!-- <div class="dropdown_restrictions">
-                    <label for="dietaryRestriction">Choose your dietary restrictions:</label>
-                    <select id="dietaryRestriction">
-                    <-- Options will be populated by JavaScript -->
-                    <!-- </select> -->
-                <!-- </div> --> 
-            <!-- Map Container -->
-            <!-- <div class=" row">
-                <div id="map"></div>
+        <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+            <div class="row" style="padding-bottom: 20px">
+                <h2 class="text-left" id="app-title">ENTREE</h2>
             </div>
-        </div> -->
+
+            <h2 class="text-center mb-4">Review Sentiments by Factors</h2>
+
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Container for noUiSlider -->
+                    <div id="date-slider" style="margin: 20px; width: 300px;"></div>
+
+                    <div class="col">
+                        <label for="field2">Factors:</label>
+                        <select name="field2" id="field2" multiple
+                                multiselect-search="true"
+                                multiselect-select-all="true"
+                                multiselect-max-items="3"
+                                placeholder="Select factors">
+                            <option>Food Quality</option>
+                            <option>Customer Service</option>
+                            <option>Price Value</option>
+                        </select>
+                    </div> <!-- End .col -->
+                </div> <!-- End .row.align-items-center -->
+            </div> <!-- End .container -->
+
+            <!-- SVG for Bubble Chart -->
+            <div class="visualization" id="bubblevis">
+                <svg width="800" height="600"></svg>
+            </div>
+
+            <!-- Tooltip Element -->
+            <div id="tooltip"></div>
+        </div> <!-- End .section.text-center -->
+
+        <!-- Modal for Detailed View -->
+        <div id="detail-modal">
+            <div id="modal-content">
+                <span id="close-modal">&times;</span>
+                <!-- Dynamic Content Goes Here -->
+            </div>
+        </div>
+
+
+        <!-- ENTREE 3 -->
+<!--       <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">-->
+<!--            <div class="row">-->
+<!--                <h2 class="text-left entree-corner">ENTREE</h2>-->
+<!--            </div>-->
+<!--                &lt;!&ndash; Dropdown Menu for Dietary Restrictions &ndash;&gt;-->
+<!--                 <div class="dropdown_restrictions">-->
+<!--                    <label for="dietaryRestriction">Choose your dietary restrictions:</label>-->
+<!--                    <select id="dietaryRestriction">-->
+<!--                    &lt;!&ndash; Options will be populated by JavaScript &ndash;&gt;-->
+<!--                     </select> -->
+<!--                </div> &ndash;&gt;-->
+<!--            &lt;!&ndash; Map Container &ndash;&gt;-->
+<!--            <div class=" row">-->
+<!--                <div id="map"></div>-->
+<!--            </div>-->
+<!--        </div> -->
 
         <!-- DESSERT -->
-        <div class="section text-center" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
-            <div class="row">
-                <h2 class="text-center" id="dessert-title">DESSERT</h2>
-            </div>
-            <!-- Dropdown Menu for Dietary Restrictions -->
-            <div class="dropdown_restrictions">
-                <label for="dietaryRestriction">Choose your dietary restrictions:</label>
-                <select id="dietaryRestriction">
+    <div class="section text-center" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="row">
+            <h2 class="text-center" id="dessert-title">DESSERT</h2>
+        </div>
+        <!-- Dropdown Menu for Dietary Restrictions -->
+        <div class="dropdown_restrictions">
+            <label for="dietaryRestriction">Choose your dietary restrictions:</label>
+            <select id="dietaryRestriction">
                 <!-- Options will be populated by JavaScript -->
-                </select>
-            </div>
+            </select>
+        </div>
         <!-- Map Container -->
         <div class=" row">
             <div id="map"></div>
-        </div>
-            <!-- <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <h3 class="text-center app-text">
-                        Reviews play a big part in whether or not a
-                        restaurant is appealing to people looking for a place to dine...
-                    </h3>
-                    <h3 class="text-center app-text-2">
-                        They contain <b>lots of bias</b>, and review sentiments
-                        can include aspects that you consider not important
-                        to the dining experience like service, physical accessibility, or otherwise.
-                    </h3>
-                    <h3 class="text-center app-text-2">
-                        <b>But what about your location?</b> How does that play
-                        into the bias of reviews, the concentration of restaurants
-                        in the area, and the types of people that visit said restaurants?
-                    </h3>
-                </div>
-                <div class="col-3"></div> -->
+        </div>`
+        <!-- <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <h3 class="text-center app-text">
+                    Reviews play a big part in whether or not a
+                    restaurant is appealing to people looking for a place to dine...
+                </h3>
+                <h3 class="text-center app-text-2">
+                    They contain <b>lots of bias</b>, and review sentiments
+                    can include aspects that you consider not important
+                    to the dining experience like service, physical accessibility, or otherwise.
+                </h3>
+                <h3 class="text-center app-text-2">
+                    <b>But what about your location?</b> How does that play
+                    into the bias of reviews, the concentration of restaurants
+                    in the area, and the types of people that visit said restaurants?
+                </h3>
             </div>
-        </div>
+            <div class="col-3"></div> -->
     </div>
+  
 
+</div>
     <!-- Load JS libraries -->
 
     <!-- AOS fader -->
@@ -260,11 +314,19 @@
     <!-- topoJSON -->
     <script src="https://d3js.org/topojson.v2.min.js"></script>
 
+    <!-- noUiSlider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js"></script>
+
+    <!-- wNumb for noUiSlider tooltips -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js"></script>
+
+
     <!-- fullpage.js -->
     <link rel="stylesheet" type="text/css" href="css/fullpage.css" />
     <link rel="stylesheet" type="text/css" href="css/leaflet.css" />
     <script type="text/javascript" src="js/fullpage.js"></script>
     <script type="text/javascript" src="js/leaflet.js"></script>
+
     <script type="text/javascript">
         var myFullPage = new fullpage('#fullpage', {
             autoScrolling: true,
@@ -308,5 +370,4 @@
 
     <!-- Load data, create visualizations -->
     <script type="module" src="js/main.js"></script>
-</body>
-</html>
+    <script src="js/multi
