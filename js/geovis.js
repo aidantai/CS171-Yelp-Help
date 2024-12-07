@@ -1,4 +1,4 @@
-// main.js
+// GEOVIS.JS
 
 // Dietary restriction options
 const restrictionOptions = ['vegan', 'vegetarian', 'gluten_free', 'kosher', 'halal'];
