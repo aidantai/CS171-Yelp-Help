@@ -1,5 +1,5 @@
 {
-    "food_quality": [
+    "food": [
       "food", "delicious", "bland", "flavorful", "tasteless", "overcooked", "undercooked",
       "fresh", "stale", "soggy", "crispy", "authentic", "flavor", "taste", "presentation",
       "quality", "mouthwatering", "burnt", "raw", "spoiled"
@@ -9,15 +9,15 @@
       "waiter", "waitress", "server", "staff", "manager", "hostess", "bartender",
       "service", "polite", "incompetent", "disorganized"
     ],
-    "price_value": [
+    "price": [
       "price", "expensive", "overpriced", "cheap", "reasonable", "affordable", "value",
       "worth", "cost", "pricing", "expensive", "steal", "deal", "rip-off"
     ],
-    "ambiance_atmosphere": [
+    "ambiance": [
       "cozy", "romantic", "loud", "quiet", "noisy", "music", "lighting", "decor",
       "vibe", "ambiance", "atmosphere", "comfortable", "crowded", "empty"
     ],
-    "wait_time": [
+    "wait": [
       "wait", "long", "short", "quick", "fast", "slow", "immediate", "seated",
       "delayed", "rush", "timely", "time", "service time", "kitchen delay"
     ],
@@ -25,11 +25,11 @@
       "clean", "dirty", "spotless", "hygienic", "sanitary", "filthy", "messy",
       "sticky", "crumbs", "trash", "cleanliness", "grime", "smelly", "unsanitary"
     ],
-    "portion_size": [
+    "portion size": [
       "portion", "size", "big", "small", "huge", "tiny", "enough", "filling",
       "scant", "generous", "leftovers", "shareable", "hearty"
     ],
-    "menu_options": [
+    "menu": [
       "menu", "variety", "limited", "selection", "options", "choices", "specials",
       "diverse", "flexible", "innovative", "creative", "predictable", "repetitive",
       "boring", "seasonal", "availability"
@@ -38,23 +38,23 @@
       "consistent", "inconsistent", "always", "never", "sometimes", "same", "different",
       "varied", "hit or miss", "reliable", "standard", "predictable", "up and down"
     ],
-    "dietary_accommodations": [
+    "dietary accommodations": [
       "vegan", "vegetarian", "gluten-free", "allergy", "intolerance", "kosher", 
       "halal", "accommodation", "dairy-free", "options", "customizable", "substitute"
     ],
-    "customer_interaction": [
+    "customer interaction": [
       "complaint", "problem", "resolved", "issue", "manager", "rude", "helpful",
       "understanding", "disrespectful", "accommodating", "service", "attitude", "response"
     ],
-    "crowd_levels": [
+    "crowdiness": [
       "crowded", "packed", "busy", "empty", "quiet", "full", "capacity", "overflowing",
       "lines", "queue", "seating availability", "space"
     ],
-    "parking_accessibility": [
+    "parking": [
       "parking", "lot", "street", "valet", "metered", "free parking", "nearby", 
       "walk", "accessible", "wheelchair", "distance", "handicap", "entry", "stairs"
     ],
-    "drink_quality": [
+    "drinks": [
       "cocktail", "wine", "beer", "drink", "beverage", "alcohol", "bar", "smoothie",
       "coffee", "tea", "freshly brewed", "burnt", "watered down", "overpriced drinks"
     ],
@@ -66,17 +66,16 @@
       "authentic", "traditional", "fusion", "real", "genuine", "Americanized",
       "original", "roots", "inspired", "classic", "heritage", "true to"
     ],
-    "special_events_promotions": [
+    "special events": [
       "happy hour", "deal", "promotion", "special event", "event", "discount", 
       "birthday", "celebration", "holiday", "offer", "group", "catering"
     ],
-    "staff_knowledge": [
+    "staff knowledge": [
       "knowledgeable", "expert", "recommendation", "suggest", "uncertain", "guessing",
       "unsure", "explanation", "menu knowledge", "specialty", "insight", "familiar"
     ],
-    "technology_integration": [
+    "technology": [
       "app", "mobile", "website", "online", "digital", "tech", "ordering system",
       "payment", "card reader", "bug", "error", "glitch", "crash", "reservation system"
     ]
   }
-  

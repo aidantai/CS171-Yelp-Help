@@ -11,7 +11,7 @@ def load_jsonl(file_name):
             data.append(json.loads(line))
     return pd.DataFrame(data)
 
-review_json = load_jsonl('../data/yelp_academic_dataset_review.jsonl')
+review_json = load_jsonl('../data/yelp_academic_dataset_review_top10.jsonl')
 
 import re
 
@@ -37,7 +37,7 @@ for index, review in review_json.iterrows():
 
 # print(json.dumps(review_json, indent=2))
 
-review_json.to_json('../data/yelp_academic_dataset_review_categorized.jsonl', orient='records', lines=True)
+review_json.to_json('../data/yelp_academic_dataset_review_top10_categorized.jsonl', orient='records', lines=True)
 
 
 # with open('reviews_categorized.json', 'w') as f:
