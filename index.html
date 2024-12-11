@@ -37,34 +37,34 @@
 
         <!-- MENU -->
         <div class="section" id="menu" style="background-image: url('img/menu_bg.png');  background-size: cover;">
-            <h2 class="text-center subtitle2">HERE'S WHAT WE'RE SERVING:</h2>
+            <h2 class="text-center subtitle2">HERE'S OUR MENU:</h2>
             <div class="menu-items">
-                <div data-aos="fade-up" data-aos-delay="500">
+                <div data-aos="fade-up" data-aos-delay="200">
                     🥐 APPETIZERS ......................................... $1
                 </div>
             </div>
             <div class="menu-items bullet-points">
-                <div data-aos="fade-up" data-aos-delay="500">
+                <div data-aos="fade-up" data-aos-delay="200">
                     ● THE CENTRAL QUESTION
                 </div>
             </div>
             <div class="menu-items">
-                <div data-aos="fade-up" data-aos-delay="1500">
+                <div data-aos="fade-up" data-aos-delay="500">
                     🍔 ENTREE ................................................ $2
                 </div>
             </div>
             <div class="menu-items bullet-points">
-                <div data-aos="fade-up" data-aos-delay="1500">
+                <div data-aos="fade-up" data-aos-delay="500">
                     ● ALL THE YUMMY VISUALIZATIONS
                 </div>
             </div>
             <div class="menu-items">
-                <div data-aos="fade-up" data-aos-delay="2500">
+                <div data-aos="fade-up" data-aos-delay="1000">
                     🍨 DESSERT .............................................. $3
                 </div>
             </div>
             <div class="menu-items bullet-points">
-                <div data-aos="fade-up" data-aos-delay="2500">
+                <div data-aos="fade-up" data-aos-delay="1000">
                     ● YOUR OWN PERSONAL QUIZ
                 </div>
             </div>
@@ -74,7 +74,7 @@
         <div class="section" id="appetizer1" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="text-center" id="app-title">APPETIZER</div>
             <div class="app1-text">
-                <div data-aos="fade-up" data-aos-delay="500">
+                <div data-aos="fade-up" data-aos-delay="200">
                     <div class="app-text">
                         Have you ever wanted to go out, but didn’t know what restaurant to choose?
                         Found Google Map’s recommendations unhelpful or unwieldy?
@@ -83,21 +83,21 @@
                 </div>
             </div>
             <div class="app-text-2 app1-text">
-                <div data-aos="fade-up" data-aos-delay="1250">
+                <div data-aos="fade-up" data-aos-delay="500">
                 Reviews can contain lots of bias -
                 we all have different preferences in food,
                 service, ambiance, and more.
                 </div>
             </div>
             <div class="app-text-2 app1-text">
-                <div data-aos="fade-up" data-aos-delay="2000">
+                <div data-aos="fade-up" data-aos-delay="1000">
                 <b>We aim to look at the different kinds of sentiments
                 present in reviews as well as general trends across
                 restaurants, cuisines, and locations.</b>
                 </div>
             </div>
             <div class="app-text-2 app1-text">
-                <div data-aos="fade-up" data-aos-delay="2750">
+                <div data-aos="fade-up" data-aos-delay="1500">
                 Hopefully, you’ll be able to find a restaurant
                 you’d like to visit by the end of this site!
                 </div>
@@ -110,37 +110,59 @@
                 <h2 class="text-left app-corner">APPETIZER - Ranking Game</h2>
             </div>
             <div class="row">
-                <h2 class="text-center app-text-2" style="padding-bottom:25px;">
+                <h2 class="text-center app-text-2" style="padding-bottom:-10px;">
                     Take a chance at ranking the cuisines from most to least popular.
+                    <br>
+                    Drag each card into the rank you think it fits best!
+                </h2>
+                <h2 class="text-center app-text-2" style="font-size: 18px;">
+                    Fun fact: the ranking was determined via number of restaurants operating in the US
                 </h2>
             </div>
             <div class="row">
-                <div class="col-6" id="sortable-list">
-                    <div class="card mb-2" data-rank="1">
-                        <div class="card-body">Italian</div>
-                    </div>
-                    <div class="card mb-2" data-rank="2">
-                        <div class="card-body">Japanese</div>
-                    </div>
-                    <div class="card mb-2" data-rank="3">
-                        <div class="card-body">American</div>
-                    </div>
-                    <div class="card mb-2" data-rank="4">
-                        <div class="card-body">Mexican</div>
-                    </div>
-                    <div class="card mb-2" data-rank="5">
-                        <div class="card-body">Chinese</div>
+                <div class="col-6" id="user-ranking">
+                    <h2 class="text-center rank-text">Your ranking</h2>
+                    <div class="ranking-container">
+                        <div style="margin-top: 14px; color: #5b2405">
+                            <div class="rank-labels">1st</div>
+                            <div  class="rank-labels">2nd</div>
+                            <div class="rank-labels">3rd</div>
+                            <div class="rank-labels">4th</div>
+                            <div class="rank-labels">5th</div>
+                        </div>
+                        <div class="rank-cards" id="sortable-list">
+                            <div class="card mb-2" data-rank="1">
+                                <div class="card-body">American</div>
+                            </div>
+                            <div class="card mb-2" data-rank="2">
+                                <div class="card-body">Japanese</div>
+                            </div>
+                            <div class="card mb-2" data-rank="3">
+                                <div class="card-body">Italian</div>
+                            </div>
+                            <div class="card mb-2" data-rank="4">
+                                <div class="card-body">Mexican</div>
+                            </div>
+                            <div class="card mb-2" data-rank="5">
+                                <div class="card-body">Chinese</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-6" id="correct-ranking"></div>
+                <div class="col-6" id="correct-ranking">
+                    <h2 class="text-center rank-text" style="margin-bottom: 9px;">Correct ranking</h2>
+                </div>
             </div>
             <div class="row">
                 <button class="submit-btn" onclick="handleRankingButton(button=true)">Submit</button>
+                <h2 class="text-center" style="font-size: 18px; font-family: 'Instrument Sans'; color: #5B2405; padding-top: 3vh;">
+                    Scroll down afterwards for more info on the data!
+                </h2>
             </div>
         </div>
 
         <!-- ENTREE 1 -->
-        <div class="section text-center" id="appetizer3" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="section text-center" id="entree1" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row">
                 <h2 class="text-center" id="entree-title">ENTREE</h2>
             </div>
@@ -152,23 +174,36 @@
                     <option value="review">Total Review Count by Cuisine</option>
                 </select>
             </form>
-            <div class="row" style="justify-content: center">
-                <div id="cuisine-vis" style="height: 71vh; width: 75%"></div>
+            <div class="row">
+                <div class="col-3" style="justify-content: center;">
+                    <h2 class="app-text-2"><strong>Data insight!</strong></h2>
+                    <h4 class="app-text-2" id="barchart-text" style="padding-left: 3vw; padding-top: 4vh; text-align: left;"></h4>
+                </div>
+                <div class="col-9">
+                    <div class="row" style="justify-content: center">
+                        <div id="cuisine-vis" style="height: 71vh; width: 100%"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- ENTREE 2 -->
-        <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="section text-center" id="entree2" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row" style="padding-bottom: 20px">
                 <h2 class="text-left" id="app-title">ENTREE</h2>
             </div>
             <h2>What do people comment on in reviews?</h2>
             <div class="row" style="justify-content: center;">
-                <div id="wordcloud-vis" style="height: 80vh; width: 50%"></div>
+                <div class="col">
+                    <div id="wordcloud-vis" style="height: 80vh; width: 100%"></div>
+                </div>
+                <div class="col">
+                    <div id="review-vis" style="height: 70vh; width: 100%"></div>
+                </div>
             </div>
         </div>
 
-        <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <!-- <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row" style="padding-bottom: 20px">
                 <h2 class="text-left" id="app-title">ENTREE</h2>
             </div>
@@ -176,7 +211,7 @@
             <div class="row" style="justify-content: center;">
                 <div id="review-vis" style="height: 80vh; width: 50%"></div>
             </div>
-        </div>
+        </div> -->
 
         <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row" style="padding-bottom: 20px">
@@ -184,63 +219,44 @@
             </div>
             <h2>What do people comment on in reviews?</h2>
             <div class="row" style="justify-content: center;">
-                <div id="bubble-vis" style="height: 80vh; width: 80%"></div>
+                <div id="bubble-vis" style="height: 60vh; width: 90%"></div>
+            </div>
+            <div class="row" style="justify-content: center;">
+                <div id="timeline-vis" style="height: 10vh; width: 90%"></div>
             </div>
         </div>
 
         <!-- ENTREE 3 -->
-        <!-- <div class="section text-center" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
-            <div class="row">
-                <h2 class="text-left entree-corner">ENTREE</h2>
-            </div> -->
-                <!-- Dropdown Menu for Dietary Restrictions -->
-                <!-- <div class="dropdown_restrictions">
-                    <label for="dietaryRestriction">Choose your dietary restrictions:</label>
-                    <select id="dietaryRestriction">
-                    <-- Options will be populated by JavaScript -->
-                    <!-- </select> -->
-                <!-- </div> --> 
-            <!-- Map Container -->
-            <!-- <div class=" row">
-                <div id="map"></div>
-            </div>
-        </div> -->
-
-        <!-- DESSERT -->
-        <div class="section text-center" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="section text-center" id="entree3" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row">
                 <h2 class="text-center" id="dessert-title">DESSERT</h2>
             </div>
             <!-- Dropdown Menu for Dietary Restrictions -->
-            <div class="dropdown_restrictions">
-                <label for="dietaryRestriction">Choose your dietary restrictions:</label>
-                <select id="dietaryRestriction">
-                <!-- Options will be populated by JavaScript -->
-                </select>
-            </div>
-        <!-- Map Container -->
-        <div class=" row">
-            <div id="map"></div>
-        </div>
-            <!-- <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <h3 class="text-center app-text">
-                        Reviews play a big part in whether or not a
-                        restaurant is appealing to people looking for a place to dine...
-                    </h3>
-                    <h3 class="text-center app-text-2">
-                        They contain <b>lots of bias</b>, and review sentiments
+            
+            <div class="row">
+                <div class="col-4">
+                    <h2 class="text-center app-text-2" style="padding-left: 5vw; font-size: 23px">
+                        Reviews contain <b>lots of bias</b>, and review sentiments
                         can include aspects that you consider not important
                         to the dining experience like service, physical accessibility, or otherwise.
-                    </h3>
-                    <h3 class="text-center app-text-2">
+                        <br><br>
                         <b>But what about your location?</b> How does that play
                         into the bias of reviews, the concentration of restaurants
-                        in the area, and the types of people that visit said restaurants?
-                    </h3>
+                        in the area, and the dietary restrictions?
+                        <br><br>
+                    </h2>
+                    <h2 class="text-center app-text" style="font-size: 20px;">Play around with the map on the right!</h2>
                 </div>
-                <div class="col-3"></div> -->
+                <div class="col-8 map-section">
+                    <div class="dropdown_restrictions">
+                        <label for="dietaryRestriction">Choose your dietary restrictions:</label>
+                        <select id="dietaryRestriction">
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div id="map"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -313,10 +329,11 @@
     <script type="module" src="js/barchart.js"></script>
     <script type="module" src="js/piechart.js"></script>
     <script type="module" src="js/geovis.js"></script>
+    <script type="module" src="js/timeline.js"></script>
 
     <!-- Helper files -->
     <script type="module" src="js/handledata.js"></script>
-    <script src="js/ranking.js"></script>
+    <script type="module" src="js/ranking.js"></script>
 
     <!-- d3 cloud -->
     <script src="https://cdn.jsdelivr.net/npm/d3-cloud/build/d3.layout.cloud.min.js"></script>

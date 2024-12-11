@@ -6,7 +6,7 @@ class PieReviews {
         this.parentElement = parentElement;
         this.data = data;
         this.title = "Primary Concern Behind Review"
-        this.circleColors = ["#FFC300", "#FF5733", "#C70039"];
+        // this.circleColors = ["#FFC300", "#FF5733", "#C70039"];
 
         // this.parseDate = d3.timeParse("%m/%d/%Y");
         this.initVis()
@@ -58,38 +58,49 @@ class PieReviews {
     wrangleData(){
         let vis = this;
 
-        console.log(vis.data);
-        // Bad algorithm to extract sentiment from review text
-        let service_count = 0;
-        let food_count = 0;
-        let price_count = 0;
+        // console.log(vis.data);
+        // // Bad algorithm to extract sentiment from review text
+        // let service_count = 0;
+        // let food_count = 0;
+        // let price_count = 0;
         
-        vis.data.forEach(review => {
-            if (review.text.includes("service")) {
-                service_count++;
-            }
-            if (review.text.includes("food")) {
-                food_count++;
-            }
-            if (review.text.includes("price")) {
-                price_count++;
-            }
-        })
-        let sentiments = ["Service", "Food", "Price"];
-        let sentiment_counts = [service_count, food_count, price_count];
+        // vis.data.forEach(review => {
+        //     if (review.text.includes("service")) {
+        //         service_count++;
+        //     }
+        //     if (review.text.includes("food")) {
+        //         food_count++;
+        //     }
+        //     if (review.text.includes("price")) {
+        //         price_count++;
+        //     }
+        // })
+        // let sentiments = ["Service", "Food", "Price"];
+        // let sentiment_counts = [service_count, food_count, price_count];
 
+
+        // vis.displayData = []
+        // console.log(sentiments);
+        // sentiments.forEach((sentiment, i) => {
+        //     console.log(sentiment)
+        //     vis.displayData.push({
+        //         value: sentiment_counts[i],
+        //         color: vis.circleColors[i],
+        //         sentiment: sentiments[i]
+        //     })
+        // })
+        // console.log(vis.displayData);
+
+        vis.color = d3.scaleOrdinal(d3.schemeTableau10);
 
         vis.displayData = []
-        console.log(sentiments);
-        sentiments.forEach((sentiment, i) => {
-            console.log(sentiment)
+        Object.entries(vis.data).forEach(([k, v]) => {
             vis.displayData.push({
-                value: sentiment_counts[i],
-                color: vis.circleColors[i],
-                sentiment: sentiments[i]
+                value: v,
+                sentiment: k,
+                color: vis.color(k)
             })
         })
-        console.log(vis.displayData);
 
         vis.updateVis();
 
@@ -102,12 +113,11 @@ class PieReviews {
             .data(vis.pie(vis.displayData))
             .join("path")
             .attr("d", vis.arc)
-            .style("fill", function(d, i) { return vis.circleColors[i]; })
+            .style("fill", d => d.data.color)
             .on('mouseover', function(event, d){
                 d3.select(this)
                     .attr('stroke-width', '2px')
-                    .attr('stroke', 'black')
-                    .attr('fill', 'rgba(173,222,255,0.62)');
+                    .attr('stroke', 'black');
 
                 vis.tooltip
                     .style("opacity", 1)
@@ -116,10 +126,7 @@ class PieReviews {
                     .html(`
                          <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                              <h3>Reviews on ${d.data.sentiment}<h3>
-                             <h4> value: ${d.value}</h4>      
-                             <h4> startAngle: ${d.startAngle}</h4>
-                             <h4> endAngle: ${d.endAngle}</h4>   
-                             <h4> data: ${JSON.stringify(d.data)}</h4>                         
+                             <h4> Number of Reviews: ${d.value}</h4>                            
                          </div>`);
             })
             .on('mouseout', function(event, d){

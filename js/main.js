@@ -4,7 +4,12 @@ import {BarCuisine} from "./barchart.js";
 import {PieReviews} from "./piechart.js";
 import { WordCloud } from "./wordcloud.js";
 import {BubbleVis} from "./bubblevis.js";
+import { Timeline } from "./timeline.js";
+import {handleRankingButton} from "./ranking.js";
 export {updateCuisineVis};
+
+handleRankingButton(false);
+let bubbleVis, timeline;
 
 // Load data with promises
 // Review data is 5gb, too large to load into memory with d3.text.
@@ -62,10 +67,9 @@ function initMain(data) {
     // let reviewCountVis = new BarCuisine("review-count-vis", cuisineBusinesses, "Review Count by Cuisine", (leaves)=>d3.mean(leaves, d=>d.review_count));
 
     let wordcloud = new WordCloud("wordcloud-vis", reviewcloud);
-
-    let reviewVis = new PieReviews("review-vis", reviews);
-
-    let bubbleVis = new BubbleVis("bubble-vis", reviews_dated);
+    let reviewVis = new PieReviews("review-vis", reviewcloud);
+    timeline = new Timeline("timeline-vis", reviews_dated, brushed);
+    bubbleVis = new BubbleVis("bubble-vis", reviews_dated);
 }
 
 function updateCuisineVis() {
@@ -76,4 +80,20 @@ function updateCuisineVis() {
 }
 
 window.updateCuisineVis = updateCuisineVis;
+window.handleRankingButton = handleRankingButton;
 
+let brushed = function () {
+
+	// TO-DO: React to 'brushed' event
+
+	// Get the extent of the current brush
+	let selectionRange = d3.brushSelection(d3.select(".brush").node());
+
+	// Convert the extent into the corresponding domain values
+	let selectionDomain = selectionRange.map(timeline.x.invert);
+
+
+	bubbleVis.x.domain(d3.extent(selectionDomain));
+	bubbleVis.wrangleData();
+
+}

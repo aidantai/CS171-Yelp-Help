@@ -33,6 +33,8 @@ class WordCloud {
                 vis.updateVis(words);
             });
 
+        vis.color = d3.scaleOrdinal(d3.schemeTableau10);
+
         vis.wrangleData();
     }
 
@@ -59,6 +61,8 @@ class WordCloud {
     updateVis(words) {
 
         console.log(words);
+
+        
         
 
         let vis = this;
@@ -72,7 +76,7 @@ class WordCloud {
             .join("text")
             .style("font-size", d => `${d.size}px`)
             .style("font-family", "Arial")
-            .style("fill", () => d3.schemeCategory10[Math.floor(Math.random() * 10)]) // Random color
+            .style("fill", d => vis.color(d.text)) // Random color
             .attr("text-anchor", "middle")
             .attr("transform", d => `translate(${d.x}, ${d.y})rotate(${d.rotate})`)
             .text(d => d.text);

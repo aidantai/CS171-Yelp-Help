@@ -10,11 +10,17 @@ class BubbleVis {
         // this.categories = ["food", "service", "price", "ambiance", "wait", "cleanliness", "portion size", "menu", "consistency", "dietary accommodations", "customer interaction", "crowdiness", "parking", "drinks", "reservations", "authenticity", "special events", "staff knowledge", "technology"]
         this.categories = ["food", "service", "price", "ambiance", "wait", "cleanliness", "portion size", "menu", "consistency", "dietary accommodations", "crowdiness", "parking", "drinks"]
 
+        this.data = data.map(d => {
+            d.date = new Date(d3.timeParse("%Y-%m")(d.date))
+            return d;
+        })
 
         this.initVis()
     }
 
 
+    // Data visualized by Fantastic News by Ian Kelk and Ronan Fonseca
+    // https://kelk.ai/fantastic-news/#9thpage + https://observablehq.com/d/880a53d2f9888395 
     initVis() {
         let vis = this;
 
@@ -30,8 +36,11 @@ class BubbleVis {
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
         // time scale
-        vis.x = d3.scaleLinear()
+        vis.x = d3.scaleTime()
             .range([0, vis.width])
+        
+        // move out of update
+        vis.x.domain(d3.extent(vis.data, d => d.date));
 
         // categories
         vis.y = d3.scaleBand()
@@ -52,19 +61,18 @@ class BubbleVis {
             .attr("transform", "translate(0," + 0 + ")");
 
         vis.r = d3.scaleSqrt()
-            .range([5,15]);
+            .range([4,14]);
 
-        vis.colour = d3.scaleOrdinal(d3.schemeTableau10);
+        vis.color = d3.scaleOrdinal(d3.schemeTableau10);
 
         vis.wrangleData();
     }
     wrangleData() {
         let vis = this;
 
-        vis.displayData = vis.data.map(d => {
-            d.date = d3.isoParse(d.date);
-            return d;
-        }).filter(d => vis.categories.includes(d.category))
+        
+        vis.displayData = vis.data.filter(d => vis.categories.includes(d.category))
+        vis.displayData = vis.displayData.filter(d => vis.x(d.date) >= 0 && vis.x(d.date) <= vis.width)
         // console.log(vis.displayData);
 
         vis.updateVis()
@@ -74,8 +82,7 @@ class BubbleVis {
 
         if (vis.simulation) vis.simulation.stop();
 
-        vis.r.domain(d3.extent(vis.data, d => d.count));
-        vis.x.domain(d3.extent(vis.data, d => d.date));
+        vis.r.domain(d3.extent(vis.displayData, d => d.count));
         vis.y.domain(vis.categories);
 
         vis.yAxis.tickValues(vis.y.domain());
@@ -99,10 +106,8 @@ class BubbleVis {
             .attr("r", d => vis.r(d.count))
             .attr("stroke", "white")
             .attr("stroke-width", 1)
-            .attr("fill", d => vis.colour(d.category))
+            .attr("fill", d => vis.color(d.category))
         
-        
-
 
         vis.simulation = d3.forceSimulation()
             .force("x", d3.forceX(d => vis.x(d.date)))
@@ -121,7 +126,5 @@ class BubbleVis {
         const t = vis.svg.transition().duration(400);
         vis.simulation.nodes(vis.data);
         vis.simulation.alpha(1).restart();
-
     }
-
 }

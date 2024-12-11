@@ -10,15 +10,18 @@ class BarCuisine {
         this.cuisineMetaData = {
             count: {
                 title: "Number of Restaurants by Cuisine",
-                leafFn: (leaves) => leaves.length
+                leafFn: (leaves) => leaves.length,
+                description: "Notice how American restaurants are by far the most prolific cuisine? This is mostly due to the fact that our dataset and Yelp reviews are set in America. The most reviewed restaurants were also set in New Orleans, further biasing the dataset towards American cuisine."
             },
             star: {
                 title: "Average Star Rating by Cuisine",
-                leafFn: (leaves) => d3.mean(leaves, d => d.stars)
+                leafFn: (leaves) => d3.mean(leaves, d => d.stars),
+                description: "Surprisingly, the average star ratings for each cuisine plateaued evenly around 4 stars, which may indicate that across all cuisines, most people tend to enjoy the food. Or, the people who eat the cuisine are already fans."
             },
             review: {
                 title: "Review Count by Cuisine",
-                leafFn: (leaves) => d3.mean(leaves, d => d.review_count)
+                leafFn: (leaves) => d3.mean(leaves, d => d.review_count),
+                description: "Now you might be wondering why Cajun food is the most reviewed in this dataset. A large part of our reviews were set in New Orleans, home to a large population of Cajuns, also known as Louisana Acadians."
             }
         }
 
@@ -66,6 +69,14 @@ class BarCuisine {
             .attr("class", "x-axis axis")
             .attr("transform", "translate(0," + vis.height + ")");
 
+        // vis.descriptionsvg = d3.select("#barchart-svg").append("svg")
+        //     .attr("width", document.getElementById("barchart-svg").getBoundingClientRect().width)
+        //     .attr("height", document.getElementById("barchart-svg").getBoundingClientRect().height)
+
+        // vis.description_group = vis.descriptionsvg.append('g')
+        //     .attr('class', 'title bar-title')
+
+
         vis.wrangleData();
     }
 
@@ -88,6 +99,8 @@ class BarCuisine {
             })
         })
 
+        vis.description = vis.cuisineMetaData[vis.dependentVar].description;
+
 
         vis.displayData = Array.from(d3.rollup(vis.duplicatedData, vis.leafFn, d=>d.cuisine), ([cuisine, val]) => ({cuisine, val}));
         vis.displayData = vis.displayData.sort((a, b) => b.val - a.val);
@@ -99,10 +112,15 @@ class BarCuisine {
     updateVis(){
         let vis = this;
 
+
+        
+
         // x domain: business name
         vis.x.domain(d3.map(vis.displayData, function (d) { return d.cuisine; }));
         // y domain: range of specified val
-        vis.y.domain([0, d3.max(vis.displayData, function (d) { return d.val; })]);
+        vis.y.domain([0, d3.max(vis.displayData, function (d) { 
+            if (vis.dependentVar == "star") return 5;
+            return d.val; })]);
 
         // call axes
         vis.svg.select(".y-axis").call(vis.yAxis);
@@ -118,7 +136,7 @@ class BarCuisine {
             .attr("y", (d) => vis.y(d.val))
             .attr("width", vis.x.bandwidth())
             .attr("height", (d) => vis.height - vis.y(d.val))
-            .attr("fill", "#5B2405");
+            .attr("fill", "#5B2405")
 
             // add title
         
@@ -130,8 +148,15 @@ class BarCuisine {
             .attr('transform', `translate(${vis.width / 2}, 10)`)
             .attr('text-anchor', 'middle');
 
+        // vis.description_group.selectAll(".description")
+        //     .data([vis.description])
+        //     .join("text")
+        //     .attr("class", "description")
+        //     .text(d => d)
+        //     .attr('transform', `translate(100, 50)`)
+        //     .attr('text-anchor', 'middle');
+
+        document.getElementById("barchart-text").innerHTML = vis.description;
+
     }
-
-
-
 }

@@ -1,15 +1,12 @@
 let hasSubmitted = false;
 
+export {handleRankingButton}
+
 function handleRankingButton(button=false) {
     console.log(button);
     console.log(hasSubmitted);
     if (button === true) { 
         hasSubmitted = true;
-    }
-
-    // mechanism to make dragging update only after having clicked submit
-    if (!hasSubmitted) {
-        return
     }
 
     console.log('handling ranking button');
@@ -37,13 +34,17 @@ function handleRankingButton(button=false) {
         .join('div')
         .attr('class', 'card mb-2')
     
-    cards.transition()
-        .style('background-color', d => d.match ? '#d4edda' : '#f8d7da') // Green for match, red for mismatch
-        .style('color', d => d.match ? '#155724' : '#721c24') // Text color for match/mismatch
+    if (hasSubmitted) {
+        cards.transition()
+            .style('background-color', d => d.match ? '#d4edda' : '#f8d7da') // Green for match, red for mismatch
+            .style('color', d => d.match ? '#155724' : '#721c24') // Text color for match/mismatch
+    } else {
+        cards.style('background-color', "#e1e1e1")
+    }
         
     cards.selectAll('.card-body')
         .data(d => [d])
         .join('div')
         .attr('class', 'card-body')
-        .text(d => d.correctOption);
+        .text(d => !hasSubmitted ? "?" : d.correctOption);
 }
