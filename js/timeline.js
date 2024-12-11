@@ -27,7 +27,6 @@ class Timeline {
                 dataDict[date] = d.count;
             }
         });
-        console.log(dataDict)
 
         this._displayData = []
         Object.entries(dataDict).forEach(([k, v]) => {
@@ -40,7 +39,6 @@ class Timeline {
         this._displayData.sort((a,b) => a.date - b.date)
 
 
-        console.log(this._displayData);
         this.initVis()
 	}
 
@@ -80,12 +78,9 @@ class Timeline {
 		// SVG area path generator
 		vis.area = d3.area()
 			.x(function(d) { 
-                console.log(d.date)
-                console.log(vis.x(d.date)) 
                 return vis.x(d.date); })
 			.y0(vis.height)
 			.y1(function(d) { 
-                console.log(vis.y(d.count))
                 return vis.y(d.count); });
 
 		// Draw area by using the path generator

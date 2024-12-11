@@ -79,7 +79,7 @@ function initMain(data) {
     let quizPrices = [2];
     let quizRestrictions = ["vegetarian"];
     let quizAmbiences = ["romantic"];
-    let quizFilter = businessFilter(cuisines=quizCuisines, prices=quizPrices, restrictions=quizRestrictions, ambiences=quizAmbiences);
+    let quizFilter = businessFilter("all", "all", quizRestrictions);
     let quizBusinesses = businesses.filter(quizFilter);
     console.log(quizBusinesses);
 }

@@ -45,7 +45,7 @@ function cleanReviews(text) {
 // Usage:
 //     let dennyFilter = businessFilter(["Restaurant"], ["Denny's"]);
 //     let allDennys = businesses.filter(dennyFilter)
-function businessFilter(categories="all", names="all", states="all", prices="all", restrictions="all", ambiences="all") {
+function businessFilter(categories="all", prices="all", restrictions="all", ambiences="all", names="all", states="all") {
     return (business) => {
         // apply all filters to business
         return categoryFilter(categories)(business) && nameFilter(names)(business) && stateFilter(states)(business) && priceFilter(prices)(business) && dietaryFilter(restrictions)(business) && ambienceFilter(ambiences)(business);
@@ -88,46 +88,81 @@ function stateFilter(states) {
 function priceFilter(prices) {
     return (business) => {
         if (prices === "all") return true;
-        return business.RestaurantsPriceRange2 in prices;
+        // console.log(prices)
+        // console.log(business.RestaurantsPriceRange2)
+        if ("attributes" in business) {
+            if (business.attributes && "RestaurantsPriceRange2" in business.attributes) {
+                return prices.includes(business.attributes.RestaurantsPriceRange2);
+            }
+        }
+        return true;
     }
 }
 
 function dietaryFilter(restrictions) {
-    if (restrictions === "all") return true;
-    business_restrictions = JSON.parse(business.DietaryRestrictions);
-    business_rests = []
-    Object.entries(business_restrictions).forEach(([k,v]) => {
-        if (v) {
-            business_rests.push(k)
+    return (business) => {
+        if (restrictions === "all") return true;
+        if (!("attributes" in business)) {
+            return false;
         }
-    })
 
-    let hasMatch = false;
-    business_rests.forEach(restriction => {
-        if (restrictions.includes(restriction)) {
-            hasMatch = true;
+        if (!(business.attributes)) {
+            return false;
         }
-    })
-    return hasMatch;
+
+        console.log(business.attributes)
+        if (!("DietaryRestrictions" in business.attributes)) {
+            return false;
+        }
+
+        if (!business.attributes.DietaryRestrictions || business.attributes.DietaryRestrictions === "None") {
+            return false;
+        }
+        business.attributes.DietaryRestrictions = business.attributes.DietaryRestrictions
+            .replace(/'/g, '"')          // Replace single quotes with double quotes
+            .replace(/\bFalse\b/g, 'false') // Replace Python-style False with JS-style false
+            .replace(/\bTrue\b/g, 'true');  // Replace Python-style True with JS-style true
+
+
+        let business_restrictions = JSON.parse(business.attributes.DietaryRestrictions);
+        console.log(business_restrictions)
+        let business_rests = []
+        Object.entries(business_restrictions).forEach(([k,v]) => {
+            if (v) {
+                business_rests.push(k)
+            }
+        })
+
+        let hasMatch = false;
+        business_rests.forEach(restriction => {
+            if (restrictions.includes(restriction)) {
+                hasMatch = true;
+            }
+        })
+        return hasMatch;
+    }
 }
 
-function ambienceFilter(ambiences) {
-    if (ambiences === "all") return true;
-    business_ambiences = JSON.parse(business.Ambience);
-    business_ambs = []
-    Object.entries(business_ambiences).forEach(([k,v]) => {
-        if (v) {
-            business_ambs.push(k)
-        }
-    })
 
-    let hasMatch = false;
-    business_ambiences.forEach(ambience => {
-        if (ambiences.includes(ambience)) {
-            hasMatch = true;
-        }
-    })
-    return hasMatch;
+function ambienceFilter(ambiences) {
+    return (business) => {
+        if (ambiences === "all") return true;
+        business_ambiences = JSON.parse(business.Ambience);
+        business_ambs = []
+        Object.entries(business_ambiences).forEach(([k,v]) => {
+            if (v) {
+                business_ambs.push(k)
+            }
+        })
+
+        let hasMatch = false;
+        business_ambiences.forEach(ambience => {
+            if (ambiences.includes(ambience)) {
+                hasMatch = true;
+            }
+        })
+        return hasMatch;
+    }
 }
 
 // adds any categories that mark cuisine to business.cuisines
