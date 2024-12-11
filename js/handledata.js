@@ -1,5 +1,5 @@
 // Functions for cleaning data when loaded from JSONs and filtering
-export { cleanBusinesses, cleanReviews, businessFilter, categoryFilter, nameFilter, stateFilter, addCuisine };
+export { cleanBusinesses, cleanReviews, businessFilter, categoryFilter, nameFilter, stateFilter, priceFilter, dietaryFilter, ambienceFilter, addCuisine };
 
 function cleanBusinesses(text) {
     // Split text into lines, then parse into JSONs
@@ -45,10 +45,10 @@ function cleanReviews(text) {
 // Usage:
 //     let dennyFilter = businessFilter(["Restaurant"], ["Denny's"]);
 //     let allDennys = businesses.filter(dennyFilter)
-function businessFilter(categories="all", names="all", states="all") {
+function businessFilter(categories="all", names="all", states="all", prices="all", restrictions="all", ambiences="all") {
     return (business) => {
         // apply all filters to business
-        return categoryFilter(categories)(business) && nameFilter(names)(business) && stateFilter(states)(business);
+        return categoryFilter(categories)(business) && nameFilter(names)(business) && stateFilter(states)(business) && priceFilter(prices)(business) && dietaryFilter(restrictions)(business) && ambienceFilter(ambiences)(business);
     }
 }
 
@@ -83,6 +83,51 @@ function stateFilter(states) {
         // if in state return true;
         return true;
     }
+}
+
+function priceFilter(prices) {
+    return (business) => {
+        if (prices === "all") return true;
+        return business.RestaurantsPriceRange2 in prices;
+    }
+}
+
+function dietaryFilter(restrictions) {
+    if (restrictions === "all") return true;
+    business_restrictions = JSON.parse(business.DietaryRestrictions);
+    business_rests = []
+    Object.entries(business_restrictions).forEach(([k,v]) => {
+        if (v) {
+            business_rests.push(k)
+        }
+    })
+
+    let hasMatch = false;
+    business_rests.forEach(restriction => {
+        if (restrictions.includes(restriction)) {
+            hasMatch = true;
+        }
+    })
+    return hasMatch;
+}
+
+function ambienceFilter(ambiences) {
+    if (ambiences === "all") return true;
+    business_ambiences = JSON.parse(business.Ambience);
+    business_ambs = []
+    Object.entries(business_ambiences).forEach(([k,v]) => {
+        if (v) {
+            business_ambs.push(k)
+        }
+    })
+
+    let hasMatch = false;
+    business_ambiences.forEach(ambience => {
+        if (ambiences.includes(ambience)) {
+            hasMatch = true;
+        }
+    })
+    return hasMatch;
 }
 
 // adds any categories that mark cuisine to business.cuisines

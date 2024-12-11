@@ -54,9 +54,9 @@ function initMain(data) {
     let cuisineList = Object.keys(cuisines).slice(0, 10);
     console.log(cuisineList);
     // Filters for all business that offer a particular cuisine
-    let cuisineFilter = businessFilter(cuisineList)
+    let allcuisineFilter = businessFilter(cuisineList)
     let cuisineAdder = addCuisine(cuisineList)
-    let cuisineBusinesses = businesses.filter(cuisineFilter).map(cuisineAdder);
+    let cuisineBusinesses = businesses.filter(allcuisineFilter).map(cuisineAdder);
     // console.log(cuisineFilter);
     console.log(cuisineBusinesses);
 
@@ -70,6 +70,18 @@ function initMain(data) {
     let reviewVis = new PieReviews("review-vis", reviewcloud);
     timeline = new Timeline("timeline-vis", reviews_dated, brushed);
     bubbleVis = new BubbleVis("bubble-vis", reviews_dated);
+
+    // Quiz
+    // Filter on Cuisines
+    // Filter on Price Range
+    // Filter on Dietary Restrictions
+    let quizCuisines = ["Italian"];
+    let quizPrices = [2];
+    let quizRestrictions = ["vegetarian"];
+    let quizAmbiences = ["romantic"];
+    let quizFilter = businessFilter(cuisines=quizCuisines, prices=quizPrices, restrictions=quizRestrictions, ambiences=quizAmbiences);
+    let quizBusinesses = businesses.filter(quizFilter);
+    console.log(quizBusinesses);
 }
 
 function updateCuisineVis() {
