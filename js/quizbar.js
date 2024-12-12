@@ -156,21 +156,14 @@ class QuizBar {
             .join("text")
             .attr("class", "text-title")
             .text(d => d)
-<<<<<<< Updated upstream
             .text("Top Matched Restaurants By Review Count")
             .attr('transform', `translate(${vis.width / 2}, -40)`)
             .attr('text-anchor', 'middle')
             .style("font-size", "25px")
             .style("font-family", "Instrument Sans")
             .style("fill", "#5B2405")
-            .style("font-weight", "bolder");
-
-
-=======
-            .attr('transform', `translate(${vis.width / 2}, 10)`)
-            .attr('text-anchor', 'middle')
+            .style("font-weight", "bolder")
             .attr("opacity", vis.reveal);
->>>>>>> Stashed changes
 
         // document.getElementById("barchart-text").innerHTML = vis.description;
 
