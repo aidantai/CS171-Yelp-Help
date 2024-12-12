@@ -35,7 +35,7 @@ class QuizBar {
     initVis(){
         let vis = this;
 
-        vis.margin = {top: 40, right: 40, bottom: 40, left: 40};
+        vis.margin = {top: 100, right: 40, bottom: 40, left: 70};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -64,12 +64,14 @@ class QuizBar {
 
         vis.svg.append("g")
             .attr("class", "y-axis axis")
-            .attr("transform", "translate(0,0)");
+            .attr("transform", "translate(0,0)")
+            .style("font-size", "15px");
+
 
         vis.svg.append("g")
             .attr("class", "x-axis axis")
-            .attr("transform", "translate(0," + vis.height + ")");
-
+            .attr("transform", "translate(0," + vis.height + ")")
+            .style("font-size", "15px");
         // vis.descriptionsvg = d3.select("#barchart-svg").append("svg")
         //     .attr("width", document.getElementById("barchart-svg").getBoundingClientRect().width)
         //     .attr("height", document.getElementById("barchart-svg").getBoundingClientRect().height)
@@ -100,6 +102,8 @@ class QuizBar {
 
         vis.displayData = vis.displayData.slice(0, 5);
 
+        vis.topRestaurant = vis.displayData[0];
+
         vis.updateVis();
 
     }
@@ -112,7 +116,7 @@ class QuizBar {
         vis.x.domain(d3.map(vis.displayData, function (d) { return d.name; }));
         // y domain: range of specified val
         vis.y.domain([0, d3.max(vis.displayData, function (d) { 
-            if (vis.dependentVar == "star") return 5;
+            if (vis.dependentVar === "star") return 5;
             return d.review_count; })]);
 
         // call axes
@@ -131,15 +135,33 @@ class QuizBar {
             .attr("height", (d) => vis.height - vis.y(d.review_count))
             .attr("fill", "#5B2405")
 
-            // add title
-        
-        vis.title_group.selectAll(".title")
+        if (vis.text) {
+            vis.text.remove();
+        }
+        vis.text = vis.svg.append("text")
+            .attr("class", "top-text")
+            .text("The top matched restaurant for you is " + vis.topRestaurant.name + "!")
+            .attr('transform', `translate(${vis.width / 2}, -15)`)
+            .attr('text-anchor', 'middle')
+            .style("font-size", "20px")
+            .style("font-family", "Instrument Sans")
+            .style("fill", "#a05a32");
+
+
+        vis.title_group.selectAll("text")
             .data([vis.title])
             .join("text")
-            .attr("class", "title")
+            .attr("class", "text-title")
             .text(d => d)
-            .attr('transform', `translate(${vis.width / 2}, 10)`)
-            .attr('text-anchor', 'middle');
+            .text("Top Matched Restaurants By Review Count")
+            .attr('transform', `translate(${vis.width / 2}, -40)`)
+            .attr('text-anchor', 'middle')
+            .style("font-size", "25px")
+            .style("font-family", "Instrument Sans")
+            .style("fill", "#5B2405")
+            .style("font-weight", "bolder");
+
+
 
         // document.getElementById("barchart-text").innerHTML = vis.description;
 

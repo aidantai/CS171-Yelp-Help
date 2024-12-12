@@ -105,7 +105,7 @@
         </div>
 
         <!-- APPETIZER 2 -->
-        <div class="section" id="appetizer2" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="section" id="appetizer2" style="background-image: url('img/appetizer_bg_2.png');  background-size: cover;">
             <div class="row">
                 <h2 class="text-left app-corner">APPETIZER - Ranking Game</h2>
             </div>
@@ -125,7 +125,7 @@
                     <div class="ranking-container">
                         <div style="margin-top: 14px; color: #5b2405">
                             <div class="rank-labels">1st</div>
-                            <div  class="rank-labels">2nd</div>
+                            <div class="rank-labels">2nd</div>
                             <div class="rank-labels">3rd</div>
                             <div class="rank-labels">4th</div>
                             <div class="rank-labels">5th</div>
@@ -176,8 +176,8 @@
             </form>
             <div class="row">
                 <div class="col-3" style="justify-content: center;">
-                    <h2 class="app-text"><strong>Data insight!</strong></h2>
-                    <h4 class="app-text-2" id="barchart-text" style="padding-left: 3vw; padding-top: 4vh; text-align: left;"></h4>
+                    <h2 class="app-text" style="padding: 20px; border-radius: 20px; background-color: white;"><strong>Data insight!</strong></h2>
+                    <h4 class="app-text-2" id="barchart-text" style="padding-left: 3vw; padding-top: 3vh; text-align: left;"></h4>
                 </div>
                 <div class="col-9">
                     <div class="row" style="justify-content: center">
@@ -189,12 +189,22 @@
 
         <!-- ENTREE  -->        
 
-        <div class="section text-center" id="entree-review" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="section text-center" id="entree-review" style="background-image: url('img/appetizer_bg_2.png');  background-size: cover;">
             <div class="row" style="padding-bottom: 20px">
                 <h2 class="text-left" id="app-title">ENTREE</h2>
             </div>
-            <h2>What do people comment on in reviews?</h2>
-            <div id="review-count-vis" style="height: 70vh; width: 100%"></div>
+            <h2 class="text-center app-text-2">Total review count over the years...</h2>
+            <div class="row">
+                <div class="col-3" style="justify-content: center;">
+                    <h2 class="app-text" style="padding: 20px; border-radius: 20px; background-color: white;"><strong>Data insight!</strong></h2>
+                    <h2 class="text-center app-text-2" style="width: 100%; padding-left: 3vw; padding-top: 3vh; text-align: left;">Notice how the number of reviews drop severely after 2020? This is due to the fact that during the height of COVID-19, a lot less people went out to eat and consequently, less people were reviewing food.</h2>
+                </div>
+                <div class="col-9">
+                    <div class="row" style="justify-content: center">
+                        <div id="review-count-vis" style="height: 70vh; width: 100%; padding-right: 20px; padding-bottom: 20px"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- ENTREE 2 -->
@@ -202,7 +212,7 @@
             <div class="row" style="padding-bottom: 20px">
                 <h2 class="text-left" id="app-title">ENTREE</h2>
             </div>
-            <h2>What do people comment on in reviews?</h2>
+            <h2 class="text-center app-text-2">What do people comment on in reviews?</h2>
             <div class="row" style="justify-content: center;">
                 <div class="col">
                     <div id="wordcloud-vis" style="height: 80vh; width: 100%"></div>
@@ -227,17 +237,17 @@
             <div class="row" style="padding-bottom: 20px">
                 <h2 class="text-left" id="app-title">ENTREE</h2>
             </div>
-            <h2>What do people comment on in reviews?</h2>
+            <h2 class="text-center app-text-2">How do these review sentiments look over time? <br> Brush over the timeline below to adjust the timeframe!</h2>
             <div class="row" style="justify-content: center;">
                 <div id="bubble-vis" style="height: 60vh; width: 90%"></div>
             </div>
             <div class="row" style="justify-content: center;">
-                <div id="timeline-vis" style="height: 10vh; width: 90%"></div>
+                <div id="timeline-vis" style="height: 10vh; width: 90%;"></div>
             </div>
         </div>
 
         <!-- ENTREE 3 -->
-        <div class="section text-center" id="entree3" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+        <div class="section text-center" id="entree3" style="background-image: url('img/appetizer_bg_2.png');  background-size: cover;">
             <div class="row">
                 <h2 class="text-center" id="dessert-title">ENTREE</h2>
             </div>
@@ -279,7 +289,7 @@
             <div class="row">
                 <h2 class="text-center app-text-2">
                     Disregarding reviews, which restaurant would best fit your needs?
-                    <br><br>
+                    <br>
                     Using our personalized quiz below, let's find out!
                 </h2>
                 <h2 class="text-center app-text-2" style="font-weight: bolder;">
@@ -350,29 +360,15 @@
                     <label class="custom-control-label" for="customCheck1">Halal</label>
                 </div>
 
-                <!-- <h2 class="text-center app-text-2" style="font-weight: bolder;">
-                    5. What kind of ambience would you like?
-                </h2>
-                <select id="ambience" name="ambience">
-                    <option value="all">All</option>
-                    <option value="Touristy">Touristy</option>
-                    <option value="Hipster">Hipster</option>
-                    <option value="Romantic">Romantic</option>
-                    <option value="Divey">Divey</option>
-                    <option value="Intimate">Intimate</option>
-                    <option value="Trendy">Trendy</option>
-                    <option value="Upscale">Upscale</option>
-                    <option value="Classy">Classy</option>
-                    <option value="Casual">Casual</option>
-                </select> -->
-
-                <div class="row" style="padding-top: 5vh;">
+                <div class="row" style="padding-top: 5vh; padding-bottom: 3vh;">
                     <button class="submit-btn" onclick="updateQuiz()">Submit</button>
                 </div>
 
                 <div class="row" style="justify-content: center">
-                    <div id="quiz-bar-vis" style="height: 71vh; width: 100%"></div>
+                    <div id="quiz-bar-vis" style="height: 71vh; width: 80%"></div>
                 </div>
+
+                <div class="row" id="top-text"></div>
             </div>
 
         </div>

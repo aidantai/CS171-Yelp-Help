@@ -24,7 +24,7 @@ class BubbleVis {
     initVis() {
         let vis = this;
 
-        vis.margin = {top: 40, right: 40, bottom: 40, left: 120};
+        vis.margin = {top: 40, right: 70, bottom: 40, left: 120};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -54,12 +54,13 @@ class BubbleVis {
 
         vis.xGroup = vis.svg.append("g")
             .attr("class", "y-axis axis")
-            .attr("transform", "translate(0," + vis.margin.top * -1 + ")");
+            .attr("transform", "translate(0," + vis.margin.top * -1 + ")")
+            .style("font-size", "15px");
 
         vis.yGroup = vis.svg.append("g")
             .attr("class", "x-axis axis")
-            .attr("transform", "translate(0," + 0 + ")");
-
+            .attr("transform", "translate(0," + 0 + ")")
+            .style("font-size", "15px");
         vis.r = d3.scaleSqrt()
             .range([4,14]);
 
@@ -89,7 +90,7 @@ class BubbleVis {
         vis.r.domain(d3.extent(vis.displayData, d => d.count));
         vis.y.domain(vis.categories);
 
-        vis.yAxis.tickValues(vis.y.domain());
+        vis.yAxis.tickValues(vis.y.domain())
         vis.xAxis.tickFormat(d3.timeFormat("%B, %Y"))
         vis.yGroup.call(vis.yAxis);
         vis.xGroup.call(vis.xAxis);

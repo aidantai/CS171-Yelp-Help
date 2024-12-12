@@ -86,7 +86,7 @@ class Areachart {
 		// Draw area by using the path generator
 		vis.svg.append("path")
 			.datum(vis._displayData)
-			.attr("fill", "#ccc")
+			.attr("fill", "#8c3a0b")
 			.attr("d", vis.area);
 
 		// vis.xScale = d3.scaleTime()
@@ -106,5 +106,4 @@ class Areachart {
             .call(vis.yAxis);
 
         }
-	
 }
