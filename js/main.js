@@ -6,10 +6,15 @@ import { WordCloud } from "./wordcloud.js";
 import {BubbleVis} from "./bubblevis.js";
 import { Timeline } from "./timeline.js";
 import {handleRankingButton} from "./ranking.js";
+import { Areachart } from "./areachart.js";
+import { QuizBar } from "./quizbar.js";
 export {updateCuisineVis};
 
 handleRankingButton(false);
 let bubbleVis, timeline;
+// filter updated by quiz
+let quizFilter = businessFilter();
+let quizbarchart;
 
 // Load data with promises
 // Review data is 5gb, too large to load into memory with d3.text.
@@ -66,22 +71,26 @@ function initMain(data) {
     // let averageStarVis = new BarCuisine("average-star-vis", cuisineBusinesses, "Average Star Rating by Cuisine", (leaves)=>d3.mean(leaves, d=>d.stars));
     // let reviewCountVis = new BarCuisine("review-count-vis", cuisineBusinesses, "Review Count by Cuisine", (leaves)=>d3.mean(leaves, d=>d.review_count));
 
+    let reviewcountvis = new Areachart("review-count-vis", reviews_dated);
     let wordcloud = new WordCloud("wordcloud-vis", reviewcloud);
     let reviewVis = new PieReviews("review-vis", reviewcloud);
     timeline = new Timeline("timeline-vis", reviews_dated, brushed);
     bubbleVis = new BubbleVis("bubble-vis", reviews_dated);
 
-    // Quiz
-    // Filter on Cuisines
-    // Filter on Price Range
-    // Filter on Dietary Restrictions
-    let quizCuisines = ["Italian"];
-    let quizPrices = [2];
-    let quizRestrictions = ["vegetarian"];
-    let quizAmbiences = ["romantic"];
-    let quizFilter = businessFilter("all", "all", quizRestrictions);
+    
+    // let quizCuisines = ["Italian"];
+    // let quizPrices = [2];
+    // let quizRestrictions = ["vegetarian"];
+    // let quizAmbiences = ["romantic"];
     let quizBusinesses = businesses.filter(quizFilter);
     console.log(quizBusinesses);
+    console.log(quizBusinesses);
+    quizBusinesses = businesses.filter(quizFilter);
+    console.log(quizBusinesses)
+
+    quizbarchart = new QuizBar("quiz-bar-vis", businesses, quizFilter);
+
+
 }
 
 function updateCuisineVis() {
@@ -93,6 +102,7 @@ function updateCuisineVis() {
 
 window.updateCuisineVis = updateCuisineVis;
 window.handleRankingButton = handleRankingButton;
+window.updateQuiz = updateQuiz;
 
 let brushed = function () {
 
@@ -108,4 +118,84 @@ let brushed = function () {
 	bubbleVis.x.domain(d3.extent(selectionDomain));
 	bubbleVis.wrangleData();
 
+}
+
+function updateQuiz() {
+    // Quiz
+    // Filter on Cuisines
+    // Filter on Price Range
+    // Filter on Dietary Restrictions
+    // let quizPrices = [document.getElementById("quiz-price")];
+    // let quizRestrictions = document.getElementById("quiz-restrictions");
+    // let quizAmbiences = document.getElementById("quiz-ambience");
+    console.log("updating quiz");
+    let quizCuisines = "all"
+    let quizPrices = "all";
+    let quizRestrictions = "all";
+    let quizAmbiences = "all";
+    let cuisine = String(d3.select("#cuisine").property("value"))
+    quizCuisines = Array.from([cuisine])
+    if (cuisine == "all") quizCuisines = "all";
+    if (cuisine === "American") {
+        quizCuisines = ["American (Traditional)", "American (New)"];
+    }
+
+    let price = d3.select('input[name="price-radio"]:checked')
+    if (price != null && price != [null]) {
+        console.log(price)
+        try {
+            quizPrices = [price.property("value")]
+            if (price.property("value") == "all") quizPrices = "all";
+        } catch {
+            quizPrices = "all"
+        }
+        
+    }
+    if (quizPrices == ["all"]) quizPrices = "all";
+    console.log(price);
+
+    let restrictions = d3.selectAll('input[name="diet-check"]:checked')
+    let checkedRestrictions = []
+    if (restrictions != null && restrictions != [] && restrictions != [null]) {
+        restrictions.each( function() {
+            checkedRestrictions.push(this.value)
+        }
+        )
+    }
+    console.log(checkedRestrictions)
+    if (checkedRestrictions.length == 0) {
+        quizRestrictions = "all";
+    } else {
+        quizRestrictions = Array.from(checkedRestrictions);
+    }
+    restrictions.each(function() {
+        console.log(this.value);
+    })
+    // console.log(Object.keys(restrictions));
+    // console.log(restrictions._groups);
+    // if (restrictions) {
+    //     quizRestrictions = []
+    //     restrictions._groups.forEach(d => {
+    //         quizRestrictions.push(d.property("value"));
+    //     })
+    // }
+    // console.log(quizRestrictions)
+
+    
+    // let quizCuisines = [d3.select("#cuisine").property("value")];
+
+    // let ambience = String(d3.select("#ambience").property("value"))
+    // quizAmbiences = Array.from([ambience])
+    // if (ambience == "all") quizAmbiences = "all";
+
+    if (quizCuisines == ["all"]) quizCuisines = "all";
+    // if (quizAmbiences == ["all"]) quizAmbiences = "all";
+    console.log(quizCuisines, quizPrices, quizRestrictions, quizAmbiences)
+    quizFilter = businessFilter(quizCuisines, quizPrices, quizRestrictions, "all");
+
+    console.log(quizFilter);
+
+    if (quizbarchart) {
+        quizbarchart.wrangleData(quizFilter);
+    }
 }

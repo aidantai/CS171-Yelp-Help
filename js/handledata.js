@@ -110,7 +110,6 @@ function dietaryFilter(restrictions) {
             return false;
         }
 
-        console.log(business.attributes)
         if (!("DietaryRestrictions" in business.attributes)) {
             return false;
         }
@@ -125,7 +124,6 @@ function dietaryFilter(restrictions) {
 
 
         let business_restrictions = JSON.parse(business.attributes.DietaryRestrictions);
-        console.log(business_restrictions)
         let business_rests = []
         Object.entries(business_restrictions).forEach(([k,v]) => {
             if (v) {
@@ -147,7 +145,32 @@ function dietaryFilter(restrictions) {
 function ambienceFilter(ambiences) {
     return (business) => {
         if (ambiences === "all") return true;
-        business_ambiences = JSON.parse(business.Ambience);
+        if (!("attributes" in business)) {
+            return false;
+        }
+
+        if (!(business.attributes)) {
+            return false;
+        }
+
+        if (!("Ambience" in business.attributes)) {
+            return false;
+        }
+
+        if (!business.attributes.Ambience || business.attributes.Ambience === "None") {
+            return false;
+        }
+        business.attributes.Ambience = business.attributes.Ambience
+            .replace(/'/g, '"')          // Replace single quotes with double quotes
+            .replace(/\bFalse\b/g, 'false') // Replace Python-style False with JS-style false
+            .replace(/\bTrue\b/g, 'true');  // Replace Python-style True with JS-style true
+
+
+        try {
+            business_ambiences = JSON.parse(business.attributes.Ambience);
+        } catch {
+            return false;
+        }
         business_ambs = []
         Object.entries(business_ambiences).forEach(([k,v]) => {
             if (v) {

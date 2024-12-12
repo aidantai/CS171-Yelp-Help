@@ -176,7 +176,7 @@
             </form>
             <div class="row">
                 <div class="col-3" style="justify-content: center;">
-                    <h2 class="app-text-2"><strong>Data insight!</strong></h2>
+                    <h2 class="app-text"><strong>Data insight!</strong></h2>
                     <h4 class="app-text-2" id="barchart-text" style="padding-left: 3vw; padding-top: 4vh; text-align: left;"></h4>
                 </div>
                 <div class="col-9">
@@ -185,6 +185,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- ENTREE  -->        
+
+        <div class="section text-center" id="entree-review" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+            <div class="row" style="padding-bottom: 20px">
+                <h2 class="text-left" id="app-title">ENTREE</h2>
+            </div>
+            <h2>What do people comment on in reviews?</h2>
+            <div id="review-count-vis" style="height: 70vh; width: 100%"></div>
         </div>
 
         <!-- ENTREE 2 -->
@@ -229,7 +239,7 @@
         <!-- ENTREE 3 -->
         <div class="section text-center" id="entree3" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
             <div class="row">
-                <h2 class="text-center" id="dessert-title">DESSERT</h2>
+                <h2 class="text-center" id="dessert-title">ENTREE</h2>
             </div>
             <!-- Dropdown Menu for Dietary Restrictions -->
             
@@ -259,6 +269,114 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- DESSERT -->
+        <div class="section text-center" id="dessert" style="background-image: url('img/appetizer_bg.png');  background-size: cover;">
+            <div class="row">
+                <h2 class="text-center" id="dessert-title">DESSERT</h2>
+            </div>
+            <div class="row">
+                <h2 class="text-center app-text-2">
+                    Disregarding reviews, which restaurant would best fit your needs?
+                    <br><br>
+                    Using our personalized quiz below, let's find out!
+                </h2>
+                <h2 class="text-center app-text-2" style="font-weight: bolder;">
+                    1. What type of cuisine would you like?
+                </h2>
+                <select id="cuisine" name="cuisine">
+                    <option value="all">All</option>
+                    <option value="American">American</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Chinese">Chinese</option>
+                </select>
+
+                <h2 class="text-center app-text-2" style="font-weight: bolder;">
+                    2. What price range are you comfortable with?
+                </h2>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="1" name="price-radio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Budget ($)</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="2" name="price-radio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Moderate ($$)</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="3" name="price-radio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Fine-dining ($$$)</label>
+                  </div>`
+
+                <h2 class="text-center app-text-2" style="font-weight: bolder;">
+                    3. What star rating would you like it to be?
+                </h2>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="2" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">4+ stars</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">3+ stars</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" value="anystar" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Any rating</label>
+                  </div>
+
+                <h2 class="text-center app-text-2" style="font-weight: bolder;">
+                    4. Any dietary restrictions?
+                </h2>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="diet-check" class="custom-control-input" value="vegetarian">
+                    <label class="custom-control-label" for="customCheck1">Vegetarian</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="diet-check" class="custom-control-input" value="vegan">
+                    <label class="custom-control-label" for="customCheck1">Vegan</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="diet-check" class="custom-control-input" value="gluten-free">
+                    <label class="custom-control-label" for="customCheck1">Gluten-free</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="diet-check" class="custom-control-input" value="kosher">
+                    <label class="custom-control-label" for="customCheck1">Kosher</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" name="diet-check" class="custom-control-input" value="halal">
+                    <label class="custom-control-label" for="customCheck1">Halal</label>
+                </div>
+
+                <!-- <h2 class="text-center app-text-2" style="font-weight: bolder;">
+                    5. What kind of ambience would you like?
+                </h2>
+                <select id="ambience" name="ambience">
+                    <option value="all">All</option>
+                    <option value="Touristy">Touristy</option>
+                    <option value="Hipster">Hipster</option>
+                    <option value="Romantic">Romantic</option>
+                    <option value="Divey">Divey</option>
+                    <option value="Intimate">Intimate</option>
+                    <option value="Trendy">Trendy</option>
+                    <option value="Upscale">Upscale</option>
+                    <option value="Classy">Classy</option>
+                    <option value="Casual">Casual</option>
+                </select> -->
+
+                <div class="row" style="padding-top: 5vh;">
+                    <button class="submit-btn" onclick="updateQuiz()">Submit</button>
+                </div>
+
+                <div class="row" style="justify-content: center">
+                    <div id="quiz-bar-vis" style="height: 71vh; width: 100%"></div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
     <!-- Load JS libraries -->
@@ -308,6 +426,7 @@
             scrollOverflow: false,
             responsiveWidth: 700,
             parallax: true,
+            navigation: true,
             licenseKey: 'gplv3-license',
             anchors: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
             afterLoad: function() {

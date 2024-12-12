@@ -272,3 +272,21 @@ label {
     align-items: flex-start;
 }
 
+#cuisine, #ambience {
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    display: block;
+    margin: auto;
+    border: 1px solid #d3c4b6;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.custom-radio, .custom-checkbox {
+    font-family: "Instrument Sans";
+    font-size: 17px;
+    color: #5B2405;
+}

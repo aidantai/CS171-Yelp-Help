@@ -65,6 +65,10 @@ class BubbleVis {
 
         vis.color = d3.scaleOrdinal(d3.schemeTableau10);
 
+        vis.tooltip = d3.select("body").append('div')
+            .attr('class', "tooltip")
+            .attr('id', 'bubble-tooltip');
+
         vis.wrangleData();
     }
     wrangleData() {
@@ -107,6 +111,38 @@ class BubbleVis {
             .attr("stroke", "white")
             .attr("stroke-width", 1)
             .attr("fill", d => vis.color(d.category))
+            .on('mouseover', function(event, d) {
+                d3.select(this)
+                    .attr('stroke-width', '2px')
+                    .attr('fill', 'grey)');
+
+                vis.tooltip
+                    .style("opacity", 1)
+                    .style("left", event.pageX + 20 + "px")
+                    .style("top", event.pageY + "px")
+                    .html(`
+                     <div style="border: thin solid grey; border-radius: 5px; background: darkgrey; padding: 10px">
+                         <h4>Sentiment: ${d.category}</h4>
+                         <strong>Quarter: </strong> ${d3.timeFormat("%Y-%m")(d.date)}<br />
+                         <strong>Count: </strong>${d.count}<br />
+                     </div>`);
+            })
+            .on('mouseout', function (event, d) {
+                d3.select(this)
+                    .attr('stroke-width', '1px')
+                    .attr("fill", d => vis.color(d.category));
+
+                vis.tooltip
+                    .style("opacity", 0)
+                    .style("left", 0)
+                    .style("top", 0)
+                    .html(``);
+            })
+            .on('mousemove', (event,d) => {
+                vis.tooltip
+                    .style("left", event.pageX + 20 + "px")
+                    .style("top", event.pageY + "px")
+            });
         
 
         vis.simulation = d3.forceSimulation()
