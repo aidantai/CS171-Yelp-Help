@@ -7,6 +7,7 @@ class QuizBar {
         this.data = data;
         this.dependentVar = "review";
         this.quizFilter = quizFilter;
+        this.reveal = 0;
 
         this.cuisineMetaData = {
             count: {
@@ -83,9 +84,10 @@ class QuizBar {
         vis.wrangleData();
     }
 
-    wrangleData(quizFilter="none"){
+    wrangleData(quizFilter="none", reveal=0){
         let vis = this;
 
+        vis.reveal = reveal;
         console.log(quizFilter);
 
         if (quizFilter !== "none") {
@@ -113,15 +115,15 @@ class QuizBar {
         
 
         // x domain: business name
-        vis.x.domain(d3.map(vis.displayData, function (d) { return d.name; }));
+        vis.x.domain(d3.map(vis.displayData, function (d) { return d.name; }))
         // y domain: range of specified val
         vis.y.domain([0, d3.max(vis.displayData, function (d) { 
             if (vis.dependentVar === "star") return 5;
             return d.review_count; })]);
 
         // call axes
-        vis.svg.select(".y-axis").call(vis.yAxis);
-        vis.svg.select(".x-axis").call(vis.xAxis);
+        vis.svg.select(".y-axis").call(vis.yAxis).attr("opacity", vis.reveal);
+        vis.svg.select(".x-axis").call(vis.xAxis).attr("opacity", vis.reveal);
 
 
         vis.rects = vis.svg.selectAll(".bar")
@@ -134,6 +136,7 @@ class QuizBar {
             .attr("width", vis.x.bandwidth())
             .attr("height", (d) => vis.height - vis.y(d.review_count))
             .attr("fill", "#5B2405")
+            .attr("opacity", vis.reveal);
 
         if (vis.text) {
             vis.text.remove();
@@ -153,6 +156,7 @@ class QuizBar {
             .join("text")
             .attr("class", "text-title")
             .text(d => d)
+<<<<<<< Updated upstream
             .text("Top Matched Restaurants By Review Count")
             .attr('transform', `translate(${vis.width / 2}, -40)`)
             .attr('text-anchor', 'middle')
@@ -162,6 +166,11 @@ class QuizBar {
             .style("font-weight", "bolder");
 
 
+=======
+            .attr('transform', `translate(${vis.width / 2}, 10)`)
+            .attr('text-anchor', 'middle')
+            .attr("opacity", vis.reveal);
+>>>>>>> Stashed changes
 
         // document.getElementById("barchart-text").innerHTML = vis.description;
 

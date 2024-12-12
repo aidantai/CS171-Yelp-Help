@@ -196,6 +196,6 @@ function updateQuiz() {
     console.log(quizFilter);
 
     if (quizbarchart) {
-        quizbarchart.wrangleData(quizFilter);
+        quizbarchart.wrangleData(quizFilter, 1);
     }
 }
