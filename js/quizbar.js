@@ -148,7 +148,8 @@ class QuizBar {
             .attr('text-anchor', 'middle')
             .style("font-size", "20px")
             .style("font-family", "Instrument Sans")
-            .style("fill", "#a05a32");
+            .style("fill", "#a05a32")
+            .attr('opacity', vis.reveal);
 
 
         vis.title_group.selectAll("text")
