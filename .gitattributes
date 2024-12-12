@@ -1,2 +1,17 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+data/rev_t10_categ_dated.json filter=lfs diff=lfs merge=lfs -text
+data/rev_t25_categ_dated.json filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_cuisines_reduced.json filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_review_top10.jsonl filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_business_top10.jsonl filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_categories.json filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_review_top25.jsonl filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_review_top25_categorized_dated.json filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_review_top10_categorized.jsonl filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_review_top25_categorized.jsonl filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_review_top25_categorized_3.jsonl filter=lfs diff=lfs merge=lfs -text
+data/wordcloud_top25.json filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_business.jsonl filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_business_top25.jsonl filter=lfs diff=lfs merge=lfs -text
+data/yelp_academic_dataset_cuisines.json filter=lfs diff=lfs merge=lfs -text
